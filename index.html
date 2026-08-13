@@ -48,9 +48,61 @@
                 radial-gradient(at 100% 100%, rgba(216, 27, 96, 0.05) 0px, transparent 50%);
         }
 
+        /* Login Modal Styles */
+        .login-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(15, 23, 42, 0.8);
+            backdrop-filter: blur(8px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+            transition: opacity 0.3s ease;
+        }
+
+        .login-card {
+            background: #ffffff;
+            border-radius: var(--radius-lg);
+            padding: 40px;
+            width: 100%;
+            max-width: 400px;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+            border: 1px solid var(--border-color);
+            text-align: center;
+        }
+
+        .login-brand h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            color: var(--primary-dark);
+            margin-bottom: 4px;
+        }
+
+        .login-brand p {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-bottom: 24px;
+        }
+
+        .error-msg {
+            color: #dc2626;
+            background: #fee2e2;
+            padding: 8px 12px;
+            border-radius: 6px;
+            font-size: 0.8rem;
+            margin-bottom: 16px;
+            display: none;
+        }
+
+        /* App Wrapper */
         .app-wrapper {
             max-width: 1200px;
             margin: 0 auto;
+            display: none; /* Hidden until logged in */
         }
 
         /* Glassmorphic Brand Header */
@@ -98,6 +150,12 @@
             letter-spacing: 0.5px;
         }
 
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
         .brand-badge {
             background: rgba(255, 255, 255, 0.15);
             backdrop-filter: blur(10px);
@@ -108,6 +166,23 @@
             font-weight: 600;
             letter-spacing: 1px;
             text-transform: uppercase;
+        }
+
+        .btn-logout {
+            background: rgba(239, 68, 68, 0.2);
+            border: 1px solid rgba(239, 68, 68, 0.4);
+            color: #fca5a5;
+            padding: 8px 16px;
+            border-radius: 30px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .btn-logout:hover {
+            background: rgba(239, 68, 68, 0.9);
+            color: white;
         }
 
         /* Analytics Overview Cards */
@@ -207,6 +282,7 @@
 
         .form-group {
             margin-bottom: 18px;
+            text-align: left;
         }
 
         .form-group label {
@@ -458,7 +534,8 @@
         /* Print Settings */
         @media print {
             body { background: white !important; padding: 0 !important; color: #000 !important; }
-            .app-wrapper { max-width: 100% !important; }
+            .login-overlay { display: none !important; }
+            .app-wrapper { max-width: 100% !important; display: block !important; }
             .brand-header, .stats-grid, .card, .toolbar, .btn-icon, th:last-child, td:last-child { display: none !important; }
             .main-grid { display: block !important; }
             .table-container { border: 1px solid #333 !important; box-shadow: none !important; border-radius: 0 !important; }
@@ -476,7 +553,37 @@
 </head>
 <body>
 
-<div class="app-wrapper">
+<!-- Login Modal -->
+<div class="login-overlay" id="loginOverlay">
+    <div class="login-card">
+        <div class="login-brand">
+            <h2>Sanvee's by Tony</h2>
+            <p>Enter credentials to access portal</p>
+        </div>
+        <div class="error-msg" id="loginError">Invalid Username or Password</div>
+        <form id="loginForm">
+            <div class="form-group">
+                <label>Username</label>
+                <div class="input-wrapper">
+                    <i class="fa-solid fa-user"></i>
+                    <input type="text" id="username" class="form-control" placeholder="Admin username" required>
+                </div>
+            </div>
+            <div class="form-group">
+                <label>Password</label>
+                <div class="input-wrapper">
+                    <i class="fa-solid fa-lock"></i>
+                    <input type="password" id="password" class="form-control" placeholder="••••••••" required>
+                </div>
+            </div>
+            <button type="submit" class="btn btn-primary" style="margin-top: 10px;">
+                <i class="fa-solid fa-right-to-bracket"></i> Login
+            </button>
+        </form>
+    </div>
+</div>
+
+<div class="app-wrapper" id="appWrapper">
 
     <div class="print-only-header">
         <h1>Sanvee's by Tony</h1>
@@ -489,8 +596,13 @@
             <h1>Sanvee's by Tony</h1>
             <p>Cloud-Connected Customer Relationship & Database</p>
         </div>
-        <div class="brand-badge">
-            <i class="fa-solid fa-cloud" style="color: #60a5fa; margin-right: 6px;"></i> Live Sync
+        <div class="header-actions">
+            <div class="brand-badge">
+                <i class="fa-solid fa-cloud" style="color: #60a5fa; margin-right: 6px;"></i> Live Sync
+            </div>
+            <button class="btn-logout" onclick="logoutAdmin()">
+                <i class="fa-solid fa-power-off"></i> Logout
+            </button>
         </div>
     </header>
 
@@ -605,10 +717,42 @@
 
 </div>
 
-<!-- Firebase SDK Integration -->
+<!-- Session & Firebase Script -->
 <script type="module">
     import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
     import { getDatabase, ref, push, onValue, remove } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-database.js";
+
+    // Authentication Logic
+    const loginOverlay = document.getElementById('loginOverlay');
+    const appWrapper = document.getElementById('appWrapper');
+    const loginForm = document.getElementById('loginForm');
+    const loginError = document.getElementById('loginError');
+
+    // Auto-login check on page load
+    if (localStorage.getItem('sanvee_admin_logged_in') === 'true') {
+        loginOverlay.style.display = 'none';
+        appWrapper.style.display = 'block';
+    }
+
+    loginForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+        const user = document.getElementById('username').value.trim();
+        const pass = document.getElementById('password').value.trim();
+
+        if (user === 'admin' && pass === 'project2') {
+            localStorage.setItem('sanvee_admin_logged_in', 'true');
+            loginOverlay.style.display = 'none';
+            appWrapper.style.display = 'block';
+            loginError.style.display = 'none';
+        } else {
+            loginError.style.display = 'block';
+        }
+    });
+
+    window.logoutAdmin = function() {
+        localStorage.removeItem('sanvee_admin_logged_in');
+        location.reload();
+    };
 
     // Firebase Configuration
     const firebaseConfig = {
