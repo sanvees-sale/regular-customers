@@ -470,9 +470,9 @@
             vertical-align: middle;
         }
 
-        .customer-avatar {
-            width: 36px;
-            height: 36px;
+        .serial-badge {
+            width: 32px;
+            height: 32px;
             border-radius: 50%;
             background: var(--primary-light);
             color: var(--primary);
@@ -481,8 +481,6 @@
             justify-content: center;
             font-weight: 700;
             font-size: 0.85rem;
-            margin-right: 10px;
-            flex-shrink: 0;
         }
 
         .phone-badge {
@@ -696,6 +694,7 @@
                 <table>
                     <thead>
                         <tr>
+                            <th style="width: 60px; text-align: center;">SL</th>
                             <th>Customer</th>
                             <th>Phone</th>
                             <th>Total Spent</th>
@@ -705,7 +704,7 @@
                     </thead>
                     <tbody id="tableBody">
                         <tr>
-                            <td colspan="5" style="text-align:center; padding: 40px; color: var(--text-muted);">
+                            <td colspan="6" style="text-align:center; padding: 40px; color: var(--text-muted);">
                                 Loading data from Firebase Cloud...
                             </td>
                         </tr>
@@ -813,7 +812,7 @@
             updateStats([]);
             tbody.innerHTML = `
                 <tr>
-                    <td colspan="5" style="text-align:center; padding: 40px; color: var(--text-muted);">
+                    <td colspan="6" style="text-align:center; padding: 40px; color: var(--text-muted);">
                         <i class="fa-solid fa-box-open" style="font-size: 2rem; margin-bottom: 10px; display:block;"></i>
                         No customer entries found in Firebase.
                     </td>
@@ -830,12 +829,10 @@
             const serialNumber = index + 1; // Auto incrementing serial number (1, 2, 3...)
             const row = document.createElement('tr');
             row.innerHTML = `
-                <td>
-                    <div style="display: flex; align-items: center;">
-                        <span class="customer-avatar">${serialNumber}</span>
-                        <strong>${c.name}</strong>
-                    </div>
+                <td style="text-align: center;">
+                    <span class="serial-badge">${serialNumber}</span>
                 </td>
+                <td><strong>${c.name}</strong></td>
                 <td><span class="phone-badge">${c.phone}</span></td>
                 <td><span class="amount-tag">৳ ${Number(c.amount).toLocaleString()}</span></td>
                 <td><span class="qty-tag">${c.quantity} items</span></td>
