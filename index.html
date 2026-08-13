@@ -482,6 +482,7 @@
             font-weight: 700;
             font-size: 0.85rem;
             margin-right: 10px;
+            flex-shrink: 0;
         }
 
         .phone-badge {
@@ -821,17 +822,17 @@
         }
 
         // Convert Firebase object to Array
-        Object.keys(data).reverse().forEach((key) => {
+        Object.keys(data).reverse().forEach((key, index) => {
             const c = data[key];
             c.id = key;
             currentCustomersList.push(c);
 
-            const initial = c.name ? c.name.charAt(0).toUpperCase() : '?';
+            const serialNumber = index + 1; // Auto incrementing serial number (1, 2, 3...)
             const row = document.createElement('tr');
             row.innerHTML = `
                 <td>
                     <div style="display: flex; align-items: center;">
-                        <span class="customer-avatar">${initial}</span>
+                        <span class="customer-avatar">${serialNumber}</span>
                         <strong>${c.name}</strong>
                     </div>
                 </td>
@@ -888,10 +889,10 @@
         }
 
         let csvContent = "data:text/csv;charset=utf-8,";
-        csvContent += "Customer Name,Phone Number,Total Purchase Amount (BDT),Parcel Quantity\n";
+        csvContent += "SL,Customer Name,Phone Number,Total Purchase Amount (BDT),Parcel Quantity\n";
 
-        currentCustomersList.forEach((c) => {
-            csvContent += `"${c.name}","${c.phone}",${c.amount},${c.quantity}\n`;
+        currentCustomersList.forEach((c, index) => {
+            csvContent += `${index + 1},"${c.name}","${c.phone}",${c.amount},${c.quantity}\n`;
         });
 
         const encodedUri = encodeURI(csvContent);
