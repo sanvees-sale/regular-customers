@@ -777,7 +777,7 @@
         year: 'numeric', month: 'long', day: 'numeric'
     });
 
-    // Handle Form Submit
+    // Handle Form Submit with Duplicate Verification
     const form = document.getElementById('customerForm');
     form.addEventListener('submit', function(e) {
         e.preventDefault();
@@ -786,6 +786,14 @@
         const phone = document.getElementById('phone').value.trim();
         const amount = document.getElementById('amount').value;
         const quantity = document.getElementById('quantity').value;
+
+        // Check if customer with the same phone number already exists
+        const isDuplicate = currentCustomersList.some(customer => customer.phone === phone);
+
+        if (isDuplicate) {
+            alert('This customer (Phone Number) is already registered in the system!\nPlease delete the existing entry first if you want to re-add.');
+            return;
+        }
 
         // Push data to Firebase Realtime DB
         push(customersRef, {
