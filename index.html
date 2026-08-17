@@ -350,6 +350,17 @@
             box-shadow: 0 6px 16px rgba(142, 36, 170, 0.35);
         }
 
+        .btn-cancel {
+            background: #e2e8f0;
+            color: #475569;
+            margin-top: 8px;
+            display: none;
+        }
+
+        .btn-cancel:hover {
+            background: #cbd5e1;
+        }
+
         /* Action Toolbar */
         .toolbar {
             display: flex;
@@ -507,13 +518,17 @@
             font-size: 0.8rem;
         }
 
+        .action-cell {
+            display: flex;
+            justify-content: flex-end;
+            gap: 6px;
+        }
+
         .btn-icon {
             width: 32px;
             height: 32px;
             border-radius: 8px;
             border: none;
-            background: #fee2e2;
-            color: #dc2626;
             cursor: pointer;
             display: inline-flex;
             align-items: center;
@@ -521,7 +536,22 @@
             transition: all 0.2s ease;
         }
 
-        .btn-icon:hover {
+        .btn-edit {
+            background: #e0f2fe;
+            color: #0284c7;
+        }
+
+        .btn-edit:hover {
+            background: #0284c7;
+            color: white;
+        }
+
+        .btn-delete {
+            background: #fee2e2;
+            color: #dc2626;
+        }
+
+        .btn-delete:hover {
             background: #dc2626;
             color: white;
         }
@@ -565,7 +595,7 @@
                 <label>Username</label>
                 <div class="input-wrapper">
                     <i class="fa-solid fa-user"></i>
-                    <input type="text" id="username" class="form-control" placeholder="Admin username" required>
+                    <input type="text" id="username" class="form-control" placeholder="admin or staff" required>
                 </div>
             </div>
             <div class="form-group">
@@ -596,10 +626,10 @@
             <p>Cloud-Connected Customer Relationship & Database</p>
         </div>
         <div class="header-actions">
-            <div class="brand-badge">
-                <i class="fa-solid fa-cloud" style="color: #60a5fa; margin-right: 6px;"></i> Live Sync
+            <div class="brand-badge" id="roleBadge">
+                <i class="fa-solid fa-user-shield" style="color: #60a5fa; margin-right: 6px;"></i> Role: Admin
             </div>
-            <button class="btn-logout" onclick="logoutAdmin()">
+            <button class="btn-logout" onclick="logoutUser()">
                 <i class="fa-solid fa-power-off"></i> Logout
             </button>
         </div>
@@ -632,10 +662,12 @@
     <div class="main-grid">
         <div class="card">
             <div class="card-header">
-                <i class="fa-solid fa-user-plus"></i>
-                <h2>Add New Customer</h2>
+                <i class="fa-solid fa-user-plus" id="formHeaderIcon"></i>
+                <h2 id="formHeaderTitle">Add New Customer</h2>
             </div>
             <form id="customerForm">
+                <input type="hidden" id="editKeyId" value="">
+
                 <div class="form-group">
                     <label>Customer Name</label>
                     <div class="input-wrapper">
@@ -669,7 +701,10 @@
                 </div>
 
                 <button type="submit" class="btn btn-primary" id="saveBtn">
-                    <i class="fa-solid fa-plus"></i> Save to Cloud DB
+                    <i class="fa-solid fa-plus" id="saveBtnIcon"></i> <span id="saveBtnText">Save to Cloud DB</span>
+                </button>
+                <button type="button" class="btn btn-cancel" id="cancelBtn" onclick="resetFormState()">
+                    Cancel Edit
                 </button>
             </form>
         </div>
@@ -720,18 +755,21 @@
 <!-- Session & Firebase Script -->
 <script type="module">
     import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
-    import { getDatabase, ref, push, onValue, remove } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-database.js";
+    import { getDatabase, ref, push, update, onValue, remove } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-database.js";
 
-    // Authentication Logic
+    // Authentication Logic & Roles
     const loginOverlay = document.getElementById('loginOverlay');
     const appWrapper = document.getElementById('appWrapper');
     const loginForm = document.getElementById('loginForm');
     const loginError = document.getElementById('loginError');
+    const roleBadge = document.getElementById('roleBadge');
 
-    // Auto-login check on page load
-    if (localStorage.getItem('sanvee_admin_logged_in') === 'true') {
+    let currentUserRole = localStorage.getItem('sanvee_user_role') || null;
+
+    if (currentUserRole) {
         loginOverlay.style.display = 'none';
         appWrapper.style.display = 'block';
+        updateRoleBadge(currentUserRole);
     }
 
     loginForm.addEventListener('submit', function(e) {
@@ -739,20 +777,38 @@
         const user = document.getElementById('username').value.trim();
         const pass = document.getElementById('password').value.trim();
 
-        if (user === 'admin' && pass === 'project2') {
-            localStorage.setItem('sanvee_admin_logged_in', 'true');
+        // Admin password updated to 'project9'
+        if (user === 'admin' && pass === 'project9') {
+            currentUserRole = 'admin';
+            localStorage.setItem('sanvee_user_role', 'admin');
             loginOverlay.style.display = 'none';
             appWrapper.style.display = 'block';
+            updateRoleBadge('admin');
+            loginError.style.display = 'none';
+        } else if (user === 'staff' && pass === 'staff123') {
+            currentUserRole = 'staff';
+            localStorage.setItem('sanvee_user_role', 'staff');
+            loginOverlay.style.display = 'none';
+            appWrapper.style.display = 'block';
+            updateRoleBadge('staff');
             loginError.style.display = 'none';
         } else {
             loginError.style.display = 'block';
         }
     });
 
-    window.logoutAdmin = function() {
-        localStorage.removeItem('sanvee_admin_logged_in');
+    window.logoutUser = function() {
+        localStorage.removeItem('sanvee_user_role');
         location.reload();
     };
+
+    function updateRoleBadge(role) {
+        if (role === 'admin') {
+            roleBadge.innerHTML = `<i class="fa-solid fa-user-shield" style="color: #60a5fa; margin-right: 6px;"></i> Role: Admin (Owner)`;
+        } else {
+            roleBadge.innerHTML = `<i class="fa-solid fa-user" style="color: #34d399; margin-right: 6px;"></i> Role: Staff`;
+        }
+    }
 
     // Firebase Configuration
     const firebaseConfig = {
@@ -760,7 +816,7 @@
         authDomain: "sanveepos.firebaseapp.com",
         databaseURL: "https://sanveepos-default-rtdb.asia-southeast1.firebasedatabase.app",
         projectId: "sanveepos",
-        storageBucket: "sanveepos.firebasestorage.app",
+        storageBucket: "sanveepos.firebastorage.app",
         messagingSenderId: "708358963481",
         appId: "1:708358963481:web:c41cbb979e690f796ac588",
         measurementId: "G-5D7NKQF0P8"
@@ -777,36 +833,62 @@
         year: 'numeric', month: 'long', day: 'numeric'
     });
 
-    // Handle Form Submit with Duplicate Verification
+    // Form Reset Helper
+    window.resetFormState = function() {
+        document.getElementById('customerForm').reset();
+        document.getElementById('editKeyId').value = '';
+        document.getElementById('formHeaderTitle').innerText = 'Add New Customer';
+        document.getElementById('formHeaderIcon').className = 'fa-solid fa-user-plus';
+        document.getElementById('saveBtnIcon').className = 'fa-solid fa-plus';
+        document.getElementById('saveBtnText').innerText = 'Save to Cloud DB';
+        document.getElementById('cancelBtn').style.display = 'none';
+    }
+
+    // Handle Form Submit (Add or Edit Update)
     const form = document.getElementById('customerForm');
     form.addEventListener('submit', function(e) {
         e.preventDefault();
 
+        const editKey = document.getElementById('editKeyId').value;
         const name = document.getElementById('name').value.trim();
         const phone = document.getElementById('phone').value.trim();
         const amount = document.getElementById('amount').value;
         const quantity = document.getElementById('quantity').value;
 
-        // Check if customer with the same phone number already exists
-        const isDuplicate = currentCustomersList.some(customer => customer.phone === phone);
+        if (editKey) {
+            // Updating existing customer
+            const itemRef = ref(db, 'customers/' + editKey);
+            update(itemRef, {
+                name: name,
+                phone: phone,
+                amount: Number(amount),
+                quantity: Number(quantity)
+            }).then(() => {
+                resetFormState();
+            }).catch((err) => {
+                alert('Error updating data: ' + err.message);
+            });
+        } else {
+            // Duplicate Phone Check for new additions
+            const isDuplicate = currentCustomersList.some(customer => customer.phone === phone);
+            if (isDuplicate) {
+                alert('This customer (Phone Number) is already registered in the system!\nPlease edit the existing entry if you want to update.');
+                return;
+            }
 
-        if (isDuplicate) {
-            alert('This customer (Phone Number) is already registered in the system!\nPlease delete the existing entry first if you want to re-add.');
-            return;
+            // Push data to Firebase Realtime DB
+            push(customersRef, {
+                name: name,
+                phone: phone,
+                amount: Number(amount),
+                quantity: Number(quantity),
+                createdAt: Date.now()
+            }).then(() => {
+                resetFormState();
+            }).catch((err) => {
+                alert('Error saving data: ' + err.message);
+            });
         }
-
-        // Push data to Firebase Realtime DB
-        push(customersRef, {
-            name: name,
-            phone: phone,
-            amount: Number(amount),
-            quantity: Number(quantity),
-            createdAt: Date.now()
-        }).then(() => {
-            form.reset();
-        }).catch((err) => {
-            alert('Error saving data: ' + err.message);
-        });
     });
 
     // Realtime Sync Listener
@@ -834,7 +916,24 @@
             c.id = key;
             currentCustomersList.push(c);
 
-            const serialNumber = index + 1; // Auto incrementing serial number (1, 2, 3...)
+            const serialNumber = index + 1;
+            
+            // Generate action buttons based on logged-in role
+            let actionButtons = `
+                <button class="btn-icon btn-edit" onclick="populateEditForm('${key}')" title="Edit Customer">
+                    <i class="fa-solid fa-pen-to-square"></i>
+                </button>
+            `;
+
+            // Only show Delete button if current user is Admin
+            if (currentUserRole === 'admin') {
+                actionButtons += `
+                    <button class="btn-icon btn-delete" onclick="deleteCustomerFromFirebase('${key}')" title="Delete Entry (Admin Only)">
+                        <i class="fa-solid fa-trash-can"></i>
+                    </button>
+                `;
+            }
+
             const row = document.createElement('tr');
             row.innerHTML = `
                 <td style="text-align: center;">
@@ -845,9 +944,9 @@
                 <td><span class="amount-tag">৳ ${Number(c.amount).toLocaleString()}</span></td>
                 <td><span class="qty-tag">${c.quantity} items</span></td>
                 <td style="text-align: right;">
-                    <button class="btn-icon" onclick="deleteCustomerFromFirebase('${key}')" title="Delete Entry">
-                        <i class="fa-solid fa-trash-can"></i>
-                    </button>
+                    <div class="action-cell">
+                        ${actionButtons}
+                    </div>
                 </td>
             `;
             tbody.appendChild(row);
@@ -856,9 +955,33 @@
         updateStats(currentCustomersList);
     });
 
-    // Delete Record
+    // Populate Form for Editing
+    window.populateEditForm = function(key) {
+        const customer = currentCustomersList.find(c => c.id === key);
+        if (!customer) return;
+
+        document.getElementById('editKeyId').value = key;
+        document.getElementById('name').value = customer.name;
+        document.getElementById('phone').value = customer.phone;
+        document.getElementById('amount').value = customer.amount;
+        document.getElementById('quantity').value = customer.quantity;
+
+        document.getElementById('formHeaderTitle').innerText = 'Edit Customer Details';
+        document.getElementById('formHeaderIcon').className = 'fa-solid fa-user-pen';
+        document.getElementById('saveBtnIcon').className = 'fa-solid fa-rotate';
+        document.getElementById('saveBtnText').innerText = 'Update Changes';
+        document.getElementById('cancelBtn').style.display = 'block';
+
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    // Delete Record (Admin Only Function)
     window.deleteCustomerFromFirebase = function(key) {
-        if(confirm('Are you sure you want to remove this record permanently from Cloud DB?')) {
+        if (currentUserRole !== 'admin') {
+            alert('Permission Denied: Only Admin can delete records!');
+            return;
+        }
+        if (confirm('Are you sure you want to remove this record permanently from Cloud DB?')) {
             const itemRef = ref(db, 'customers/' + key);
             remove(itemRef);
         }
@@ -888,7 +1011,7 @@
 
     // CSV Export
     window.exportToCSV = function() {
-        if(currentCustomersList.length === 0) {
+        if (currentCustomersList.length === 0) {
             alert('No data available to export!');
             return;
         }
