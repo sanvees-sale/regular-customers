@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sanvee's by Tony - Enterprise CRM & Customer Management</title>
+    <title>Sanvee's by Tony - Customer Care & Order Management</title>
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -16,7 +16,6 @@
         :root[data-theme="light"] {
             --bg-body: #f8fafc;
             --bg-surface: #ffffff;
-            --bg-surface-elevated: #ffffff;
             --border-subtle: #e2e8f0;
             --border-strong: #cbd5e1;
             --text-primary: #0f172a;
@@ -26,11 +25,9 @@
             --input-border: #cbd5e1;
             --table-header-bg: #f1f5f9;
             --table-row-hover: #f8fafc;
-            --table-row-alt: rgba(248, 250, 252, 0.6);
             --header-gradient: linear-gradient(135deg, #1e1b4b 0%, #312e81 40%, #4338ca 75%, #6366f1 100%);
             --card-shadow: 0 1px 3px rgba(0, 0, 0, 0.05), 0 10px 25px -5px rgba(15, 23, 42, 0.05);
             --modal-overlay: rgba(15, 23, 42, 0.65);
-            --badge-bg: #e2e8f0;
             
             /* Stat Accents */
             --stat-blue-bg: #eff6ff; --stat-blue-text: #2563eb; --stat-blue-border: #bfdbfe;
@@ -44,7 +41,6 @@
         :root[data-theme="dark"] {
             --bg-body: #090d16;
             --bg-surface: #111827;
-            --bg-surface-elevated: #172033;
             --border-subtle: rgba(255, 255, 255, 0.08);
             --border-strong: rgba(255, 255, 255, 0.16);
             --text-primary: #f8fafc;
@@ -54,19 +50,17 @@
             --input-border: rgba(255, 255, 255, 0.14);
             --table-header-bg: rgba(15, 23, 42, 0.85);
             --table-row-hover: rgba(255, 255, 255, 0.035);
-            --table-row-alt: rgba(255, 255, 255, 0.015);
             --header-gradient: linear-gradient(135deg, #0f172a 0%, #1e1b4b 50%, #312e81 100%);
             --card-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
             --modal-overlay: rgba(3, 7, 18, 0.82);
-            --badge-bg: rgba(255, 255, 255, 0.1);
 
             /* Stat Accents Dark */
-            --stat-blue-bg: rgba(37, 99, 235, 0.12); --stat-blue-text: #60a5fa; --stat-blue-border: rgba(37, 99, 235, 0.25);
-            --stat-green-bg: rgba(16, 185, 129, 0.12); --stat-green-text: #34d399; --stat-green-border: rgba(16, 185, 129, 0.25);
-            --stat-rose-bg: rgba(225, 29, 72, 0.12); --stat-rose-text: #fb7185; --stat-rose-border: rgba(225, 29, 72, 0.25);
-            --stat-amber-bg: rgba(245, 158, 11, 0.12); --stat-amber-text: #fbbf24; --stat-amber-border: rgba(245, 158, 11, 0.25);
-            --stat-emerald-bg: rgba(16, 185, 129, 0.12); --stat-emerald-text: #34d399; --stat-emerald-border: rgba(16, 185, 129, 0.25);
-            --stat-purple-bg: rgba(147, 51, 234, 0.12); --stat-purple-text: #c084fc; --stat-purple-border: rgba(147, 51, 234, 0.25);
+            --stat-blue-bg: rgba(37, 99, 235, 0.15); --stat-blue-text: #60a5fa; --stat-blue-border: rgba(37, 99, 235, 0.25);
+            --stat-green-bg: rgba(16, 185, 129, 0.15); --stat-green-text: #34d399; --stat-green-border: rgba(16, 185, 129, 0.25);
+            --stat-rose-bg: rgba(225, 29, 72, 0.15); --stat-rose-text: #fb7185; --stat-rose-border: rgba(225, 29, 72, 0.25);
+            --stat-amber-bg: rgba(245, 158, 11, 0.15); --stat-amber-text: #fbbf24; --stat-amber-border: rgba(245, 158, 11, 0.25);
+            --stat-emerald-bg: rgba(16, 185, 129, 0.15); --stat-emerald-text: #34d399; --stat-emerald-border: rgba(16, 185, 129, 0.25);
+            --stat-purple-bg: rgba(147, 51, 234, 0.15); --stat-purple-text: #c084fc; --stat-purple-border: rgba(147, 51, 234, 0.25);
         }
 
         :root {
@@ -342,19 +336,19 @@
             text-transform: uppercase;
         }
 
-        /* Stats Grid */
+        /* Stats Grid - Modern Vertical Top-Icon Layout (Stripe/Shopify Style) */
         .stats-grid {
             display: grid;
-            grid-template-columns: repeat(6, 1fr);
-            gap: 16px;
+            grid-template-columns: repeat(6, minmax(0, 1fr));
+            gap: 14px;
             margin-bottom: 24px;
         }
 
-        @media (max-width: 1200px) {
-            .stats-grid { grid-template-columns: repeat(3, 1fr); }
+        @media (max-width: 1260px) {
+            .stats-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
         }
         @media (max-width: 768px) {
-            .stats-grid { grid-template-columns: repeat(2, 1fr); }
+            .stats-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
         }
         @media (max-width: 480px) {
             .stats-grid { grid-template-columns: 1fr; }
@@ -363,29 +357,50 @@
         .stat-card {
             background: var(--bg-surface);
             border: 1px solid var(--border-subtle);
-            padding: 18px 18px;
+            padding: 16px 16px;
             border-radius: var(--radius-lg);
             box-shadow: var(--card-shadow);
             display: flex;
-            align-items: center;
-            gap: 14px;
+            flex-direction: column;
+            justify-content: space-between;
+            min-width: 0;
+            overflow: visible; /* Prevents any clipping of numbers */
             position: relative;
-            overflow: hidden;
         }
 
         .stat-card:hover {
             border-color: var(--border-strong);
             transform: translateY(-2px);
+            box-shadow: 0 6px 20px -4px rgba(0, 0, 0, 0.08);
+        }
+
+        .stat-card-top {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 12px;
+            gap: 8px;
+        }
+
+        .stat-label {
+            font-size: 0.72rem;
+            text-transform: uppercase;
+            color: var(--text-muted);
+            letter-spacing: 0.6px;
+            font-weight: 700;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
         }
 
         .stat-icon {
-            width: 46px;
-            height: 46px;
-            border-radius: 12px;
+            width: 34px;
+            height: 34px;
+            border-radius: 9px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.2rem;
+            font-size: 0.95rem;
             flex-shrink: 0;
         }
 
@@ -396,61 +411,42 @@
         .stat-icon.emerald { background: var(--stat-emerald-bg); color: var(--stat-emerald-text); border: 1px solid var(--stat-emerald-border); }
         .stat-icon.purple  { background: var(--stat-purple-bg); color: var(--stat-purple-text); border: 1px solid var(--stat-purple-border); }
 
-        .stat-details {
-            min-width: 0;
-            flex: 1;
-        }
-
-        .stat-details h3 {
-            font-size: 0.72rem;
-            text-transform: uppercase;
-            color: var(--text-muted);
-            letter-spacing: 0.7px;
-            margin-bottom: 4px;
-            font-weight: 700;
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
-        }
-
         .stat-value {
-            font-size: 1.38rem;
+            font-size: 1.35rem;
             font-weight: 800;
             color: var(--text-primary);
             line-height: 1.2;
+            margin-bottom: 4px;
+            white-space: nowrap;
+            letter-spacing: -0.4px;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+
+        /* Specific Revenue Value - Roomy, Beautiful, Non-Clipping */
+        .stat-value.revenue-value {
+            font-size: 1.22rem;
+            font-weight: 800;
+            color: var(--text-primary);
+            display: flex;
+            align-items: baseline;
+            gap: 4px;
+            white-space: nowrap;
+        }
+
+        .currency-symbol {
+            color: #059669;
+            font-size: 1.05rem;
+            font-weight: 700;
+        }
+
+        .stat-subtag {
+            font-size: 0.72rem;
+            color: var(--text-muted);
+            font-weight: 600;
             white-space: nowrap;
             overflow: hidden;
             text-overflow: ellipsis;
-        }
-
-        /* Specific Revenue Card Styling */
-        .revenue-amount-box {
-            display: flex;
-            align-items: baseline;
-            gap: 3px;
-            white-space: nowrap;
-            overflow: hidden;
-        }
-
-        .revenue-currency {
-            font-size: 1.05rem;
-            font-weight: 700;
-            color: #059669;
-        }
-
-        .revenue-number {
-            font-size: 1.28rem;
-            font-weight: 800;
-            letter-spacing: -0.5px;
-            color: var(--text-primary);
-        }
-
-        .revenue-subtag {
-            font-size: 0.7rem;
-            color: var(--text-muted);
-            font-weight: 600;
             display: block;
-            margin-top: 2px;
         }
 
         /* Layout Grid */
@@ -789,12 +785,14 @@
             align-items: center;
             gap: 5px;
             border: 1px solid var(--border-subtle);
+            white-space: nowrap;
         }
 
         .amount-tag {
             font-weight: 700;
             color: #059669;
             font-family: 'JetBrains Mono', monospace;
+            white-space: nowrap;
         }
 
         .qty-tag {
@@ -806,6 +804,7 @@
             font-weight: 600;
             font-size: 0.76rem;
             border: 1px solid var(--stat-purple-border);
+            white-space: nowrap;
         }
 
         /* Status & Feedback Badges */
@@ -817,6 +816,7 @@
             border-radius: 20px;
             font-size: 0.76rem;
             font-weight: 600;
+            white-space: nowrap;
         }
 
         .status-badge.active {
@@ -863,7 +863,7 @@
             margin-top: 4px;
             font-size: 0.74rem;
             color: var(--text-muted);
-            max-width: 220px;
+            max-width: 240px;
             overflow: hidden;
             text-overflow: ellipsis;
             white-space: nowrap;
@@ -1162,7 +1162,7 @@
     <div class="login-card">
         <div class="login-brand">
             <h2>Sanvee's by Tony</h2>
-            <p>Enterprise Customer CRM & Portal</p>
+            <p>Customer Care & Order Management</p>
         </div>
         <div class="error-msg" id="loginError">Invalid credentials. Please verify username and password.</div>
         <form id="loginForm">
@@ -1200,7 +1200,7 @@
     <header class="brand-header">
         <div class="brand-info">
             <h1>Sanvee's by Tony</h1>
-            <p><i class="fa-solid fa-cloud-arrow-up"></i> Enterprise Customer Relationship & Churn Management</p>
+            <p><i class="fa-solid fa-circle-check"></i> Customer Care & Order Management Portal</p>
         </div>
         <div class="header-actions">
             <!-- Settings & Password Manager -->
@@ -1241,64 +1241,69 @@
         <span class="banner-badge">View Customers <i class="fa-solid fa-arrow-right"></i></span>
     </div>
 
-    <!-- Top Dashboard Stats -->
+    <!-- Top Dashboard Stats - 6 Vertical Top-Icon Cards (Zero Clipping, 100% Readable) -->
     <div class="stats-grid">
         <!-- 1. Total Customers -->
         <div class="stat-card">
-            <div class="stat-icon blue"><i class="fa-solid fa-users"></i></div>
-            <div class="stat-details">
-                <h3>Total Customers</h3>
-                <div class="stat-value" id="totalCustomers">0</div>
+            <div class="stat-card-top">
+                <span class="stat-label">Total Customers</span>
+                <div class="stat-icon blue"><i class="fa-solid fa-users"></i></div>
             </div>
+            <div class="stat-value" id="totalCustomers">0</div>
+            <span class="stat-subtag">All Registered Clients</span>
         </div>
 
         <!-- 2. Active Clients -->
         <div class="stat-card">
-            <div class="stat-icon green"><i class="fa-solid fa-user-check"></i></div>
-            <div class="stat-details">
-                <h3>Active Clients</h3>
-                <div class="stat-value" id="activeCustomers">0</div>
+            <div class="stat-card-top">
+                <span class="stat-label">Active Clients</span>
+                <div class="stat-icon green"><i class="fa-solid fa-user-check"></i></div>
             </div>
+            <div class="stat-value" id="activeCustomers">0</div>
+            <span class="stat-subtag">Regular & Connected</span>
         </div>
 
         <!-- 3. Disconnected / Inactive -->
         <div class="stat-card">
-            <div class="stat-icon rose"><i class="fa-solid fa-user-xmark"></i></div>
-            <div class="stat-details">
-                <h3>Disconnected</h3>
-                <div class="stat-value" id="disconnectedCustomers">0</div>
+            <div class="stat-card-top">
+                <span class="stat-label">Disconnected</span>
+                <div class="stat-icon rose"><i class="fa-solid fa-user-xmark"></i></div>
             </div>
+            <div class="stat-value" id="disconnectedCustomers">0</div>
+            <span class="stat-subtag">Inactive / Churn Risk</span>
         </div>
 
-        <!-- 4. Issues / Complaints -->
+        <!-- 4. Issues & Follow-up -->
         <div class="stat-card">
-            <div class="stat-icon amber"><i class="fa-solid fa-triangle-exclamation"></i></div>
-            <div class="stat-details">
-                <h3>Issues & Follow-up</h3>
-                <div class="stat-value" id="issuesCount">0</div>
+            <div class="stat-card-top">
+                <span class="stat-label">Issues & Follow-up</span>
+                <div class="stat-icon amber"><i class="fa-solid fa-triangle-exclamation"></i></div>
             </div>
+            <div class="stat-value" id="issuesCount">0</div>
+            <span class="stat-subtag">Action Required</span>
         </div>
 
-        <!-- 5. Total Revenue (Crystal Clear Number & Currency) -->
-        <div class="stat-card" style="grid-column: span 1;">
-            <div class="stat-icon emerald"><i class="fa-solid fa-bangladeshi-taka-sign"></i></div>
-            <div class="stat-details">
-                <h3>Total Revenue</h3>
-                <div class="revenue-amount-box" title="Total Revenue in Bangladeshi Taka">
-                    <span class="revenue-currency">৳</span>
-                    <span class="revenue-number" id="totalRevenue">0</span>
-                </div>
-                <span class="revenue-subtag" id="compactRevenue">৳ 0</span>
+        <!-- 5. Total Revenue (Roomy Full-Width Layout, Zero Clipping) -->
+        <div class="stat-card">
+            <div class="stat-card-top">
+                <span class="stat-label">Total Revenue</span>
+                <div class="stat-icon emerald"><i class="fa-solid fa-bangladeshi-taka-sign"></i></div>
             </div>
+            <div class="stat-value revenue-value">
+                <span class="currency-symbol">৳</span>
+                <span id="totalRevenue">0</span>
+            </div>
+            <span class="stat-subtag" id="compactRevenue">৳ 0</span>
         </div>
 
         <!-- 6. Parcels Shipped -->
         <div class="stat-card">
-            <div class="stat-icon purple"><i class="fa-solid fa-box-open"></i></div>
-            <div class="stat-details">
-                <h3>Parcels Shipped</h3>
-                <div class="stat-value" id="totalParcels">0</div>
+            <div class="stat-card-top">
+                <span class="stat-label">Parcels Shipped</span>
+                <div class="stat-icon purple"><i class="fa-solid fa-box-open"></i></div>
             </div>
+            <div class="stat-value" id="totalParcels">0</div>
+            <span class="stat-subtag">Total Units Delivered</span>
         </div>
     </div>
 
@@ -1444,8 +1449,8 @@
     <div class="modal-card">
         <div class="modal-header">
             <div class="modal-title-box">
-                <h3><i class="fa-solid fa-handshake-angle" style="color: var(--primary);"></i> Customer Relationship & Inactivity Log</h3>
-                <p>Record call conversation details, inactivity reasons, and internal service issues</p>
+                <h3><i class="fa-solid fa-handshake-angle" style="color: var(--primary);"></i> কাস্টমার রিলেশনশিপ ও ফিডব্যাক লগ</h3>
+                <p>কাস্টমারের সাথে কথা বলে তাদের অবস্থা, অর্ডার বন্ধের কারণ এবং আমাদের কোনো সমস্যা থাকলে নোট লিখে রাখুন</p>
             </div>
             <button class="btn-close-modal" onclick="closeCrmModal()"><i class="fa-solid fa-xmark"></i></button>
         </div>
@@ -1456,14 +1461,14 @@
                 <div>
                     <h4 id="crmCustomerName" style="font-size: 1.05rem; font-weight: 700;">Customer Name</h4>
                     <p id="crmCustomerMeta" style="font-size: 0.82rem; color: var(--text-muted); margin-top: 2px;">
-                        Phone: 017XXXXXXXX | Total Spent: ৳ 0 | Parcels: 0
+                        মোবাইল: 017XXXXXXXX | মোট কেনাকাটা: ৳ 0 | পার্সেল: 0 টি
                     </p>
                 </div>
                 <div class="quick-contact-actions">
-                    <a href="#" id="crmQuickWa" target="_blank" class="btn-quick-contact btn-quick-wa" title="Open WhatsApp Chat">
+                    <a href="#" id="crmQuickWa" target="_blank" class="btn-quick-contact btn-quick-wa" title="WhatsApp-এ মেসেজ দিন">
                         <i class="fa-brands fa-whatsapp"></i> WhatsApp
                     </a>
-                    <a href="#" id="crmQuickCall" class="btn-quick-contact btn-quick-call" title="Direct Phone Call">
+                    <a href="#" id="crmQuickCall" class="btn-quick-contact btn-quick-call" title="সরাসরি কল করুন">
                         <i class="fa-solid fa-phone"></i> Direct Call
                     </a>
                 </div>
@@ -1474,74 +1479,85 @@
 
                 <!-- Current Connection Status -->
                 <div class="form-group">
-                    <label>Customer Relationship Status</label>
+                    <label style="font-weight: 600; color: var(--text-primary); margin-bottom: 6px; display: block;">
+                        কাস্টমারের বর্তমান অবস্থা (Customer Status)
+                    </label>
                     <select id="crmStatus" class="form-control" style="padding-left: 14px;" onchange="handleStatusChange()">
-                        <option value="active">🟢 Active (Regular & Satisfied Buyer)</option>
-                        <option value="followup">🟡 Follow-up Needed (Pending Communication)</option>
-                        <option value="issue">⚠️ Issue Reported (Service/Product Complaint)</option>
-                        <option value="disconnected">🔴 Disconnected / Inactive (Stopped Ordering)</option>
-                        <option value="resolved">🤝 Resolved (Issue Solved / Reconnected)</option>
+                        <option value="active">🟢 নিয়মিত ও সন্তুষ্ট কাস্টমার (Active)</option>
+                        <option value="followup">🟡 কথা বলা বা ফলো-আপ বাকি (Follow-up Needed)</option>
+                        <option value="issue">⚠️ সার্ভিস বা প্রোডাক্ট নিয়ে অসন্তুষ্ট (Issue Reported)</option>
+                        <option value="disconnected">🔴 যোগাযোগ বিচ্ছিন্ন / অর্ডার বন্ধ (Disconnected)</option>
+                        <option value="resolved">🤝 সমস্যার সমাধান হয়েছে / পুনরায় সন্তুষ্ট (Resolved)</option>
                     </select>
                 </div>
 
                 <!-- Disconnect / Inactivity Reason -->
                 <div class="form-group">
-                    <label>Reason for Inactivity or Disconnection</label>
+                    <label style="font-weight: 600; color: var(--text-primary); margin-bottom: 6px; display: block;">
+                        কেন যোগাযোগ বিচ্ছিন্ন বা মেসেজ করছেন না? (Reason for Inactivity)
+                    </label>
                     <select id="crmReasonPreset" class="form-control" style="padding-left: 14px;" onchange="handlePresetReason()">
-                        <option value="">-- Select a preset reason or enter below --</option>
-                        <option value="Pricing feels high / budget constraint">Pricing feels high / budget constraint</option>
-                        <option value="Product quality or defect issue">Product quality or defect issue</option>
-                        <option value="Delivery delay or courier delivery boy trouble">Delivery delay or courier delivery boy trouble</option>
-                        <option value="Delayed support response or miscommunication">Delayed support response or miscommunication</option>
-                        <option value="Switched to another store / competitor">Switched to another store / competitor</option>
-                        <option value="No current need / stopped buying">No current need / stopped buying</option>
-                        <option value="Did not answer call or message">Did not answer call or message</option>
-                        <option value="Invalid phone number / SIM switched off">Invalid phone number / SIM switched off</option>
-                        <option value="Other custom reason">Other custom reason</option>
+                        <option value="">-- সাধারণ কারণ সিলেক্ট করুন (অথবা নিচে লিখুন) --</option>
+                        <option value="দাম বেশি মনে হচ্ছে">দাম বেশি মনে হচ্ছে</option>
+                        <option value="প্রোডাক্ট কোয়ালিটি বা সাইজ পছন্দ হয়নি">প্রোডাক্ট কোয়ালিটি বা সাইজ পছন্দ হয়নি</option>
+                        <option value="ডেলিভারিতে দেরি বা ডেলিভারি বয়ের সাথে ঝামেলা">ডেলিভারিতে দেরি বা ডেলিভারি বয়ের সাথে ঝামেলা</option>
+                        <option value="দেরিতে মেসেজ রিপ্লাই বা কাস্টমার সার্ভিসে অসন্তোষ">দেরিতে মেসেজ রিপ্লাই বা কাস্টমার সার্ভিসে অসন্তোষ</option>
+                        <option value="অন্য দোকান বা পেজ থেকে কেনাকাটা করছেন">অন্য দোকান বা পেজ থেকে কেনাকাটা করছেন</option>
+                        <option value="বর্তমানে প্রয়োজন নেই / বাজেট সংকট">বর্তমানে প্রয়োজন নেই / বাজেট সংকট</option>
+                        <option value="কল বা মেসেজে কোনো সাড়া দেননি">কল বা মেসেজে কোনো সাড়া দেননি</option>
+                        <option value="ফোন বন্ধ বা ভুল নম্বর">ফোন বন্ধ বা ভুল নম্বর</option>
+                        <option value="অন্যান্য কারণ">অন্যান্য কারণ (নিচে বিস্তারিত লিখুন)</option>
                     </select>
 
-                    <div class="reason-preset-chips">
-                        <span class="chip-btn" onclick="setReasonChip('Pricing feels high')">High Price</span>
-                        <span class="chip-btn" onclick="setReasonChip('Quality issue')">Quality Issue</span>
-                        <span class="chip-btn" onclick="setReasonChip('Delivery delay')">Delivery Delay</span>
-                        <span class="chip-btn" onclick="setReasonChip('No current need')">No Need</span>
-                        <span class="chip-btn" onclick="setReasonChip('Unreachable / Did not answer')">No Answer</span>
+                    <div class="reason-preset-chips" style="margin-top: 8px; margin-bottom: 8px; display: flex; flex-wrap: wrap; gap: 6px;">
+                        <span class="chip-btn" onclick="setReasonChip('দাম বেশি মনে হচ্ছে')">দাম বেশি</span>
+                        <span class="chip-btn" onclick="setReasonChip('কোয়ালিটি বা সাইজ সমস্যা')">কোয়ালিটি ইস্যু</span>
+                        <span class="chip-btn" onclick="setReasonChip('ডেলিভারিতে ঝামেলা হয়েছে')">ডেলিভারি সমস্যা</span>
+                        <span class="chip-btn" onclick="setReasonChip('দেরিতে মেসেজ রিপ্লাই')">দেরিতে রিপ্লাই</span>
+                        <span class="chip-btn" onclick="setReasonChip('বর্তমানে প্রয়োজন নেই')">প্রয়োজন নেই</span>
+                        <span class="chip-btn" onclick="setReasonChip('কল ধরে না / মেসেজে নো রিপ্লাই')">কল ধরে না</span>
                     </div>
 
-                    <input type="text" id="crmCustomReason" class="form-control" style="padding-left: 14px;" placeholder="Type detailed reason...">
+                    <input type="text" id="crmCustomReason" class="form-control" style="padding-left: 14px;" placeholder="বিস্তারিত বা নির্দিষ্ট কারণ এখানে লিখুন...">
                 </div>
 
                 <!-- Internal Business Issues -->
                 <div class="form-group">
-                    <label>Was there any service or internal issue from our side?</label>
+                    <label style="font-weight: 600; color: var(--text-primary); margin-bottom: 6px; display: block;">
+                        আমাদের দিক থেকে কোনো সার্ভিস বা অভ্যন্তরীণ সমস্যা ছিল কি?
+                    </label>
                     <select id="crmBusinessIssue" class="form-control" style="padding-left: 14px;">
-                        <option value="No internal issue detected (Customer's personal reason)">No internal issue detected (Customer's personal reason)</option>
-                        <option value="Yes - Courier partner delay or delivery issue">Yes - Courier partner delay or delivery issue</option>
-                        <option value="Yes - Product size mismatch or defect">Yes - Product size mismatch or defect</option>
-                        <option value="Yes - Delayed chat response or support deficiency">Yes - Delayed chat response or support deficiency</option>
-                        <option value="Yes - Out of stock or incorrect item dispatched">Yes - Out of stock or incorrect item dispatched</option>
-                        <option value="Other internal operational issue">Other internal operational issue</option>
+                        <option value="না, আমাদের কোনো সমস্যা নেই (কাস্টমারের ব্যক্তিগত কারণ)">না, আমাদের কোনো সমস্যা নেই (কাস্টমারের নিজস্ব কারণ)</option>
+                        <option value="হ্যাঁ - ডেলিভারি পার্টনার সমস্যা / অতিরিক্ত বিলম্ব">হ্যাঁ - ডেলিভারি পার্টনারের গাফিলতি / অতিরিক্ত দেরি</option>
+                        <option value="হ্যাঁ - প্রোডাক্টের সাইজ বা কোয়ালিটিতে অসন্তোষ">হ্যাঁ - কাপড়ের কোয়ালিটি বা সাইজে অমিল</option>
+                        <option value="হ্যাঁ - দেরিতে মেসেজ রিপ্লাই বা কাস্টমার সাপোর্ট ঘাটতি">হ্যাঁ - দেরিতে মেসেজ রিপ্লাই বা সাপোর্টে ঘাটতি</option>
+                        <option value="হ্যাঁ - প্রোডাক্টের স্টক ঘাটতি বা ভুল আইটেম প্রেরণ">হ্যাঁ - স্টক না থাকা বা ভুল আইটেম প্রেরণ</option>
+                        <option value="হ্যাঁ - অন্যান্য সার্ভিস সমস্যা">হ্যাঁ - অন্যান্য সার্ভিস সমস্যা</option>
                     </select>
                 </div>
 
                 <!-- Conversation Notes -->
                 <div class="form-group">
-                    <label>Conversation Notes & Customer Feedback</label>
-                    <textarea id="crmNotes" class="form-control" placeholder="Enter conversation details, customer feedback, offers provided, or next action steps..."></textarea>
+                    <label style="font-weight: 600; color: var(--text-primary); margin-bottom: 6px; display: block;">
+                        কাস্টমারের সাথে আলোচনার বিস্তারিত নোট ও ফিডব্যাক
+                    </label>
+                    <textarea id="crmNotes" class="form-control" rows="3" placeholder="কাস্টমারের সাথে কথা বলে কী জানা গেল, কী অফার বা ডিসকাউন্ট দেওয়া হয়েছে অথবা পরবর্তী করণীয় বিস্তারিত লিখে রাখুন..."></textarea>
                 </div>
 
                 <!-- Follow-up Scheduling -->
                 <div class="form-group">
-                    <label>Next Scheduled Follow-up Date</label>
+                    <label style="font-weight: 600; color: var(--text-primary); margin-bottom: 6px; display: block;">
+                        পরবর্তী ফলো-আপ বা যোগাযোগের তারিখ (যদি থাকে)
+                    </label>
                     <input type="date" id="crmFollowUpDate" class="form-control" style="padding-left: 14px;">
                 </div>
             </form>
         </div>
 
         <div class="modal-footer">
-            <button type="button" class="btn btn-cancel" style="display:inline-flex; width:auto;" onclick="closeCrmModal()">Cancel</button>
+            <button type="button" class="btn btn-cancel" style="display:inline-flex; width:auto;" onclick="closeCrmModal()">বাতিল</button>
             <button type="button" class="btn btn-primary" style="width:auto;" onclick="saveCrmFeedback()">
-                <i class="fa-solid fa-floppy-disk"></i> Save Feedback
+                <i class="fa-solid fa-floppy-disk"></i> ফিডব্যাক সেভ করুন
             </button>
         </div>
     </div>
@@ -1928,8 +1944,6 @@
         num = Number(num || 0);
         if (num >= 10000000) {
             return (num / 10000000).toFixed(2) + ' Cr BDT';
-        } else if (num >= 1000000) {
-            return (num / 1000000).toFixed(2) + ' Million BDT';
         } else if (num >= 100000) {
             return (num / 100000).toFixed(2) + ' Lac BDT';
         } else if (num >= 1000) {
@@ -1950,7 +1964,7 @@
         const issuesOrFollowupCount = list.filter(c => c.status === 'issue' || c.status === 'followup').length;
         document.getElementById('issuesCount').innerText = issuesOrFollowupCount.toLocaleString();
 
-        // Revenue Number Formatted Clearly
+        // Revenue Number Formatted Clearly without Clipping
         const totalRevenue = list.reduce((sum, c) => sum + Number(c.amount || 0), 0);
         document.getElementById('totalRevenue').innerText = totalRevenue.toLocaleString('en-US');
         document.getElementById('compactRevenue').innerText = `(${formatCompactTaka(totalRevenue)})`;
@@ -2077,7 +2091,7 @@
             // Feedback summary snippet
             let feedbackSnippet = '';
             if (c.disconnectReason || c.feedbackNotes || c.businessIssues) {
-                const isInternalIssue = c.businessIssues && c.businessIssues.startsWith('Yes');
+                const isInternalIssue = c.businessIssues && (c.businessIssues.startsWith('Yes') || c.businessIssues.startsWith('হ্যাঁ'));
                 const issueIcon = isInternalIssue 
                     ? '<i class="fa-solid fa-triangle-exclamation" style="color: #e11d48;"></i>' 
                     : '<i class="fa-regular fa-comment-dots"></i>';
@@ -2170,7 +2184,7 @@
 
         document.getElementById('crmCustomerId').value = customerId;
         document.getElementById('crmCustomerName').innerText = c.name;
-        document.getElementById('crmCustomerMeta').innerText = `Phone: ${c.phone} | Total Spent: ৳ ${Number(c.amount || 0).toLocaleString()} | Parcels: ${c.quantity || 1}`;
+        document.getElementById('crmCustomerMeta').innerText = `মোবাইল: ${c.phone} | মোট কেনাকাটা: ৳ ${Number(c.amount || 0).toLocaleString()} | মোট পার্সেল: ${c.quantity || 1} টি`;
 
         // Setup WhatsApp & Call buttons in modal
         const cleanPhone = formatBdPhoneForWhatsApp(c.phone);
@@ -2182,7 +2196,7 @@
         document.getElementById('crmStatus').value = c.status || 'active';
         document.getElementById('crmReasonPreset').value = '';
         document.getElementById('crmCustomReason').value = c.disconnectReason || '';
-        document.getElementById('crmBusinessIssue').value = c.businessIssues || "No internal issue detected (Customer's personal reason)";
+        document.getElementById('crmBusinessIssue').value = c.businessIssues || "না, আমাদের কোনো সমস্যা নেই (কাস্টমারের ব্যক্তিগত কারণ)";
         document.getElementById('crmNotes').value = c.feedbackNotes || '';
         document.getElementById('crmFollowUpDate').value = c.nextFollowUpDate || '';
 
@@ -2196,7 +2210,7 @@
     window.handlePresetReason = function() {
         const preset = document.getElementById('crmReasonPreset').value;
         const customInput = document.getElementById('crmCustomReason');
-        if (preset && preset !== 'Other custom reason') {
+        if (preset && preset !== 'অন্যান্য কারণ') {
             customInput.value = preset;
         }
     };
@@ -2232,7 +2246,7 @@
             lastContactedBy: currentUserRole
         }).then(() => {
             closeCrmModal();
-            showToast('Customer relationship & feedback saved successfully!', 'success');
+            showToast('কাস্টমার ফিডব্যাক ও রিলেশনশিপ সফলভাবে সংরক্ষিত হয়েছে!', 'success');
         }).catch(err => {
             showToast('Error: ' + err.message, 'error');
         });
