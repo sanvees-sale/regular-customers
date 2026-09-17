@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="bn" data-theme="dark">
+<html lang="en" data-theme="light">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,74 +7,75 @@
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,700;1,400&family=JetBrains+Mono:wght@500;600;700&display=swap" rel="stylesheet">
     <!-- FontAwesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <style>
-        /* Color Palette & CSS Variables */
-        :root[data-theme="dark"] {
-            --bg-body: #0b0f19;
-            --card-bg: rgba(23, 32, 51, 0.85);
-            --card-border: rgba(255, 255, 255, 0.08);
-            --text-main: #f8fafc;
-            --text-muted: #94a3b8;
-            --input-bg: rgba(15, 23, 42, 0.7);
-            --input-border: rgba(255, 255, 255, 0.14);
-            --table-hover: rgba(255, 255, 255, 0.035);
-            --header-bg: linear-gradient(135deg, #3730a3 0%, #6366f1 45%, #ec4899 100%);
-            --stat-purple-bg: rgba(99, 102, 241, 0.15);
-            --stat-purple: #818cf8;
-            --stat-pink-bg: rgba(244, 63, 94, 0.15);
-            --stat-pink: #fb7185;
-            --stat-gold-bg: rgba(245, 158, 11, 0.15);
-            --stat-gold: #fbbf24;
-            --stat-green-bg: rgba(16, 185, 129, 0.15);
-            --stat-green: #34d399;
-            --stat-cyan-bg: rgba(6, 182, 212, 0.15);
-            --stat-cyan: #22d3ee;
-            --badge-bg: rgba(255, 255, 255, 0.1);
-            --modal-overlay: rgba(3, 7, 18, 0.82);
-            --crm-card-header: linear-gradient(135deg, rgba(99, 102, 241, 0.2) 0%, rgba(168, 85, 247, 0.15) 100%);
-        }
-
+        /* Modern Design System & CSS Variables */
         :root[data-theme="light"] {
-            --bg-body: #f1f5f9;
-            --card-bg: #ffffff;
-            --card-border: #e2e8f0;
-            --text-main: #0f172a;
+            --bg-body: #f8fafc;
+            --bg-surface: #ffffff;
+            --bg-surface-elevated: #ffffff;
+            --border-subtle: #e2e8f0;
+            --border-strong: #cbd5e1;
+            --text-primary: #0f172a;
+            --text-secondary: #475569;
             --text-muted: #64748b;
             --input-bg: #f8fafc;
             --input-border: #cbd5e1;
-            --table-hover: #f8fafc;
-            --header-bg: linear-gradient(135deg, #4338ca 0%, #6366f1 50%, #db2777 100%);
-            --stat-purple-bg: #e0e7ff;
-            --stat-purple: #4338ca;
-            --stat-pink-bg: #ffe4e6;
-            --stat-pink: #e11d48;
-            --stat-gold-bg: #fef3c7;
-            --stat-gold: #d97706;
-            --stat-green-bg: #d1fae5;
-            --stat-green: #059669;
-            --stat-cyan-bg: #cffafe;
-            --stat-cyan: #0891b2;
-            --badge-bg: #e2e8f0;
+            --table-header-bg: #f1f5f9;
+            --table-row-hover: #f8fafc;
+            --table-row-alt: rgba(248, 250, 252, 0.6);
+            --header-gradient: linear-gradient(135deg, #1e1b4b 0%, #312e81 40%, #4338ca 75%, #6366f1 100%);
+            --card-shadow: 0 1px 3px rgba(0, 0, 0, 0.05), 0 10px 25px -5px rgba(15, 23, 42, 0.05);
             --modal-overlay: rgba(15, 23, 42, 0.65);
-            --crm-card-header: linear-gradient(135deg, #e0e7ff 0%, #f5f3ff 100%);
+            --badge-bg: #e2e8f0;
+            
+            /* Stat Accents */
+            --stat-blue-bg: #eff6ff; --stat-blue-text: #2563eb; --stat-blue-border: #bfdbfe;
+            --stat-green-bg: #ecfdf5; --stat-green-text: #059669; --stat-green-border: #a7f3d0;
+            --stat-rose-bg: #fff1f2; --stat-rose-text: #e11d48; --stat-rose-border: #fecdd3;
+            --stat-amber-bg: #fffbeb; --stat-amber-text: #d97706; --stat-amber-border: #fde68a;
+            --stat-emerald-bg: #f0fdf4; --stat-emerald-text: #16a34a; --stat-emerald-border: #bbf7d0;
+            --stat-purple-bg: #faf5ff; --stat-purple-text: #9333ea; --stat-purple-border: #e9d5ff;
+        }
+
+        :root[data-theme="dark"] {
+            --bg-body: #090d16;
+            --bg-surface: #111827;
+            --bg-surface-elevated: #172033;
+            --border-subtle: rgba(255, 255, 255, 0.08);
+            --border-strong: rgba(255, 255, 255, 0.16);
+            --text-primary: #f8fafc;
+            --text-secondary: #cbd5e1;
+            --text-muted: #94a3b8;
+            --input-bg: rgba(15, 23, 42, 0.7);
+            --input-border: rgba(255, 255, 255, 0.14);
+            --table-header-bg: rgba(15, 23, 42, 0.85);
+            --table-row-hover: rgba(255, 255, 255, 0.035);
+            --table-row-alt: rgba(255, 255, 255, 0.015);
+            --header-gradient: linear-gradient(135deg, #0f172a 0%, #1e1b4b 50%, #312e81 100%);
+            --card-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+            --modal-overlay: rgba(3, 7, 18, 0.82);
+            --badge-bg: rgba(255, 255, 255, 0.1);
+
+            /* Stat Accents Dark */
+            --stat-blue-bg: rgba(37, 99, 235, 0.12); --stat-blue-text: #60a5fa; --stat-blue-border: rgba(37, 99, 235, 0.25);
+            --stat-green-bg: rgba(16, 185, 129, 0.12); --stat-green-text: #34d399; --stat-green-border: rgba(16, 185, 129, 0.25);
+            --stat-rose-bg: rgba(225, 29, 72, 0.12); --stat-rose-text: #fb7185; --stat-rose-border: rgba(225, 29, 72, 0.25);
+            --stat-amber-bg: rgba(245, 158, 11, 0.12); --stat-amber-text: #fbbf24; --stat-amber-border: rgba(245, 158, 11, 0.25);
+            --stat-emerald-bg: rgba(16, 185, 129, 0.12); --stat-emerald-text: #34d399; --stat-emerald-border: rgba(16, 185, 129, 0.25);
+            --stat-purple-bg: rgba(147, 51, 234, 0.12); --stat-purple-text: #c084fc; --stat-purple-border: rgba(147, 51, 234, 0.25);
         }
 
         :root {
-            --primary: #6366f1;
-            --primary-hover: #4f46e5;
-            --success: #10b981;
-            --warning: #f59e0b;
-            --danger: #ef4444;
-            --radius-lg: 16px;
+            --primary: #4f46e5;
+            --primary-hover: #4338ca;
+            --primary-focus: rgba(79, 70, 229, 0.25);
+            --radius-lg: 14px;
             --radius-md: 10px;
             --radius-sm: 6px;
-            --shadow-sm: 0 4px 12px rgba(0, 0, 0, 0.05);
-            --shadow-md: 0 10px 25px -5px rgba(0, 0, 0, 0.12);
-            --shadow-lg: 0 20px 35px -10px rgba(0, 0, 0, 0.25);
         }
 
         * {
@@ -82,14 +83,15 @@
             margin: 0;
             padding: 0;
             font-family: 'Plus Jakarta Sans', sans-serif;
-            transition: background-color 0.25s ease, color 0.25s ease, border-color 0.25s ease;
+            transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
         }
 
         body {
             background-color: var(--bg-body);
-            color: var(--text-main);
+            color: var(--text-primary);
             min-height: 100vh;
-            padding: 24px 20px 60px;
+            padding: 24px 24px 60px;
+            line-height: 1.5;
         }
 
         /* Toast Container */
@@ -105,30 +107,29 @@
         }
 
         .toast {
-            background: var(--card-bg);
-            border: 1px solid var(--card-border);
-            color: var(--text-main);
-            padding: 14px 20px;
+            background: var(--bg-surface);
+            border: 1px solid var(--border-subtle);
+            color: var(--text-primary);
+            padding: 13px 18px;
             border-radius: var(--radius-md);
-            box-shadow: var(--shadow-lg);
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.15);
             display: flex;
             align-items: center;
             gap: 12px;
-            font-size: 0.9rem;
+            font-size: 0.88rem;
             font-weight: 600;
-            animation: slideIn 0.3s ease forwards;
+            animation: slideToast 0.25s ease-out forwards;
             pointer-events: auto;
-            backdrop-filter: blur(10px);
         }
 
-        .toast.success { border-left: 4px solid var(--success); }
-        .toast.warning { border-left: 4px solid var(--warning); }
-        .toast.error { border-left: 4px solid var(--danger); }
-        .toast.info { border-left: 4px solid var(--primary); }
+        .toast.success { border-left: 4px solid #10b981; }
+        .toast.error   { border-left: 4px solid #ef4444; }
+        .toast.warning { border-left: 4px solid #f59e0b; }
+        .toast.info    { border-left: 4px solid #4f46e5; }
 
-        @keyframes slideIn {
-            from { opacity: 0; transform: translateX(50px); }
-            to { opacity: 1; transform: translateX(0); }
+        @keyframes slideToast {
+            from { opacity: 0; transform: translateX(40px); }
+            to   { opacity: 1; transform: translateX(0); }
         }
 
         /* Login Modal */
@@ -138,7 +139,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.85);
+            background: var(--modal-overlay);
             backdrop-filter: blur(14px);
             display: flex;
             align-items: center;
@@ -147,78 +148,79 @@
         }
 
         .login-card {
-            background: var(--card-bg);
-            border: 1px solid var(--card-border);
+            background: var(--bg-surface);
+            border: 1px solid var(--border-subtle);
             border-radius: var(--radius-lg);
-            padding: 40px;
+            padding: 38px 34px;
             width: 100%;
-            max-width: 420px;
-            box-shadow: var(--shadow-lg);
+            max-width: 410px;
+            box-shadow: 0 20px 35px -10px rgba(0, 0, 0, 0.3);
             text-align: center;
         }
 
         .login-brand h2 {
             font-family: 'Playfair Display', serif;
             font-size: 2.1rem;
-            color: var(--text-main);
-            margin-bottom: 6px;
+            color: var(--text-primary);
+            margin-bottom: 4px;
+            font-weight: 700;
         }
 
         .login-brand p {
-            font-size: 0.88rem;
+            font-size: 0.86rem;
             color: var(--text-muted);
             margin-bottom: 24px;
         }
 
         .error-msg {
             color: #ef4444;
-            background: rgba(239, 68, 68, 0.15);
+            background: rgba(239, 68, 68, 0.12);
             padding: 10px 14px;
-            border-radius: 8px;
-            font-size: 0.85rem;
+            border-radius: var(--radius-sm);
+            font-size: 0.84rem;
             margin-bottom: 18px;
             display: none;
-            font-weight: 500;
+            font-weight: 600;
         }
 
         /* App Wrapper */
         .app-wrapper {
-            max-width: 1360px;
+            max-width: 1400px;
             margin: 0 auto;
             display: none;
         }
 
-        /* Modern Dynamic Header */
+        /* Enterprise Header */
         .brand-header {
-            background: var(--header-bg);
+            background: var(--header-gradient);
             border-radius: var(--radius-lg);
             padding: 26px 32px;
             color: white;
-            box-shadow: var(--shadow-lg);
+            box-shadow: 0 10px 30px -5px rgba(30, 27, 75, 0.25);
             margin-bottom: 22px;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            position: relative;
-            overflow: hidden;
             flex-wrap: wrap;
             gap: 16px;
         }
 
         .brand-info h1 {
             font-family: 'Playfair Display', serif;
-            font-size: 2.2rem;
+            font-size: 2.1rem;
             font-weight: 700;
-            margin-bottom: 4px;
             letter-spacing: -0.5px;
+            line-height: 1.2;
         }
 
         .brand-info p {
             opacity: 0.9;
-            font-size: 0.9rem;
+            font-size: 0.88rem;
             display: flex;
             align-items: center;
             gap: 8px;
+            margin-top: 4px;
+            font-weight: 400;
         }
 
         .header-actions {
@@ -229,90 +231,86 @@
         }
 
         .header-btn {
-            background: rgba(255, 255, 255, 0.18);
-            border: 1px solid rgba(255, 255, 255, 0.28);
+            background: rgba(255, 255, 255, 0.15);
+            border: 1px solid rgba(255, 255, 255, 0.24);
             color: white;
-            padding: 8px 14px;
+            padding: 8px 15px;
             border-radius: 30px;
-            font-size: 0.85rem;
+            font-size: 0.84rem;
             font-weight: 600;
             display: inline-flex;
             align-items: center;
             gap: 7px;
             cursor: pointer;
             backdrop-filter: blur(8px);
-            transition: all 0.2s ease;
         }
 
         .header-btn:hover {
-            background: rgba(255, 255, 255, 0.32);
+            background: rgba(255, 255, 255, 0.28);
             transform: translateY(-1px);
         }
 
         .theme-toggle {
-            width: 40px;
-            height: 40px;
+            width: 38px;
+            height: 38px;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             cursor: pointer;
-            background: rgba(255, 255, 255, 0.2);
-            border: 1px solid rgba(255, 255, 255, 0.3);
+            background: rgba(255, 255, 255, 0.16);
+            border: 1px solid rgba(255, 255, 255, 0.25);
             color: white;
-            font-size: 1.05rem;
+            font-size: 1rem;
         }
 
         .theme-toggle:hover {
-            background: rgba(255, 255, 255, 0.35);
+            background: rgba(255, 255, 255, 0.3);
         }
 
         .brand-badge {
-            background: rgba(255, 255, 255, 0.15);
-            backdrop-filter: blur(10px);
+            background: rgba(255, 255, 255, 0.16);
             border: 1px solid rgba(255, 255, 255, 0.25);
-            padding: 8px 16px;
+            padding: 7px 15px;
             border-radius: 30px;
-            font-size: 0.82rem;
-            font-weight: 600;
-            text-transform: uppercase;
+            font-size: 0.8rem;
+            font-weight: 700;
             letter-spacing: 0.5px;
+            text-transform: uppercase;
         }
 
         .btn-logout {
-            background: rgba(239, 68, 68, 0.28);
-            border: 1px solid rgba(239, 68, 68, 0.45);
+            background: rgba(239, 68, 68, 0.25);
+            border: 1px solid rgba(239, 68, 68, 0.4);
             color: white;
             padding: 8px 14px;
             border-radius: 30px;
-            font-size: 0.85rem;
+            font-size: 0.84rem;
             font-weight: 600;
             cursor: pointer;
         }
 
         .btn-logout:hover {
-            background: rgba(239, 68, 68, 0.95);
+            background: rgba(239, 68, 68, 0.9);
         }
 
-        /* Follow-Up Notification Banner */
+        /* Follow-Up Alert Banner */
         .followup-alert-banner {
-            background: linear-gradient(135deg, rgba(245, 158, 11, 0.18) 0%, rgba(217, 119, 6, 0.12) 100%);
-            border: 1px solid rgba(245, 158, 11, 0.35);
+            background: var(--stat-amber-bg);
+            border: 1px solid var(--stat-amber-border);
             border-radius: var(--radius-md);
-            padding: 14px 20px;
+            padding: 13px 20px;
             margin-bottom: 22px;
             display: none;
             align-items: center;
             justify-content: space-between;
-            color: var(--text-main);
-            box-shadow: var(--shadow-sm);
+            color: var(--text-primary);
+            box-shadow: var(--card-shadow);
             cursor: pointer;
-            transition: transform 0.2s ease, border-color 0.2s ease;
         }
 
         .followup-alert-banner:hover {
-            transform: translateY(-2px);
-            border-color: rgba(245, 158, 11, 0.6);
+            border-color: #f59e0b;
         }
 
         .banner-content {
@@ -322,79 +320,137 @@
         }
 
         .banner-icon {
-            width: 38px;
-            height: 38px;
+            width: 36px;
+            height: 36px;
             border-radius: 50%;
-            background: rgba(245, 158, 11, 0.25);
-            color: #fbbf24;
+            background: rgba(245, 158, 11, 0.2);
+            color: #d97706;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.1rem;
+            font-size: 1.05rem;
+            flex-shrink: 0;
         }
 
         .banner-badge {
-            background: #f59e0b;
-            color: #000;
+            background: #d97706;
+            color: white;
             padding: 4px 12px;
             border-radius: 20px;
-            font-size: 0.78rem;
+            font-size: 0.76rem;
             font-weight: 700;
             text-transform: uppercase;
         }
 
-        /* Top Dashboard Stats */
+        /* Stats Grid */
         .stats-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            grid-template-columns: repeat(6, 1fr);
             gap: 16px;
             margin-bottom: 24px;
         }
 
+        @media (max-width: 1200px) {
+            .stats-grid { grid-template-columns: repeat(3, 1fr); }
+        }
+        @media (max-width: 768px) {
+            .stats-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+        @media (max-width: 480px) {
+            .stats-grid { grid-template-columns: 1fr; }
+        }
+
         .stat-card {
-            background: var(--card-bg);
-            border: 1px solid var(--card-border);
-            padding: 18px 20px;
+            background: var(--bg-surface);
+            border: 1px solid var(--border-subtle);
+            padding: 18px 18px;
             border-radius: var(--radius-lg);
-            box-shadow: var(--shadow-md);
+            box-shadow: var(--card-shadow);
             display: flex;
             align-items: center;
-            gap: 16px;
+            gap: 14px;
             position: relative;
             overflow: hidden;
         }
 
+        .stat-card:hover {
+            border-color: var(--border-strong);
+            transform: translateY(-2px);
+        }
+
         .stat-icon {
-            width: 48px;
-            height: 48px;
+            width: 46px;
+            height: 46px;
             border-radius: 12px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.25rem;
+            font-size: 1.2rem;
             flex-shrink: 0;
         }
 
-        .stat-icon.purple { background: var(--stat-purple-bg); color: var(--stat-purple); }
-        .stat-icon.green  { background: var(--stat-green-bg); color: var(--stat-green); }
-        .stat-icon.pink   { background: var(--stat-pink-bg); color: var(--stat-pink); }
-        .stat-icon.gold   { background: var(--stat-gold-bg); color: var(--stat-gold); }
-        .stat-icon.danger { background: rgba(239, 68, 68, 0.15); color: #f87171; }
-        .stat-icon.cyan   { background: var(--stat-cyan-bg); color: var(--stat-cyan); }
+        .stat-icon.blue    { background: var(--stat-blue-bg); color: var(--stat-blue-text); border: 1px solid var(--stat-blue-border); }
+        .stat-icon.green   { background: var(--stat-green-bg); color: var(--stat-green-text); border: 1px solid var(--stat-green-border); }
+        .stat-icon.rose    { background: var(--stat-rose-bg); color: var(--stat-rose-text); border: 1px solid var(--stat-rose-border); }
+        .stat-icon.amber   { background: var(--stat-amber-bg); color: var(--stat-amber-text); border: 1px solid var(--stat-amber-border); }
+        .stat-icon.emerald { background: var(--stat-emerald-bg); color: var(--stat-emerald-text); border: 1px solid var(--stat-emerald-border); }
+        .stat-icon.purple  { background: var(--stat-purple-bg); color: var(--stat-purple-text); border: 1px solid var(--stat-purple-border); }
 
-        .stat-details h3 {
-            font-size: 0.74rem;
-            text-transform: uppercase;
-            color: var(--text-muted);
-            letter-spacing: 0.8px;
-            margin-bottom: 4px;
-            font-weight: 700;
+        .stat-details {
+            min-width: 0;
+            flex: 1;
         }
 
-        .stat-details p {
-            font-size: 1.45rem;
+        .stat-details h3 {
+            font-size: 0.72rem;
+            text-transform: uppercase;
+            color: var(--text-muted);
+            letter-spacing: 0.7px;
+            margin-bottom: 4px;
+            font-weight: 700;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .stat-value {
+            font-size: 1.38rem;
             font-weight: 800;
-            color: var(--text-main);
+            color: var(--text-primary);
+            line-height: 1.2;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        /* Specific Revenue Card Styling */
+        .revenue-amount-box {
+            display: flex;
+            align-items: baseline;
+            gap: 3px;
+            white-space: nowrap;
+            overflow: hidden;
+        }
+
+        .revenue-currency {
+            font-size: 1.05rem;
+            font-weight: 700;
+            color: #059669;
+        }
+
+        .revenue-number {
+            font-size: 1.28rem;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+            color: var(--text-primary);
+        }
+
+        .revenue-subtag {
+            font-size: 0.7rem;
+            color: var(--text-muted);
+            font-weight: 600;
+            display: block;
+            margin-top: 2px;
         }
 
         /* Layout Grid */
@@ -410,37 +466,31 @@
 
         /* Cards & Forms */
         .card {
-            background: var(--card-bg);
-            border: 1px solid var(--card-border);
+            background: var(--bg-surface);
+            border: 1px solid var(--border-subtle);
             border-radius: var(--radius-lg);
-            box-shadow: var(--shadow-md);
+            box-shadow: var(--card-shadow);
             padding: 24px;
         }
 
         .card-header {
             display: flex;
             align-items: center;
-            justify-content: space-between;
+            gap: 12px;
             margin-bottom: 20px;
             padding-bottom: 14px;
-            border-bottom: 1px solid var(--card-border);
-        }
-
-        .card-header-left {
-            display: flex;
-            align-items: center;
-            gap: 12px;
+            border-bottom: 1px solid var(--border-subtle);
         }
 
         .card-header i {
             color: var(--primary);
-            font-size: 1.2rem;
+            font-size: 1.15rem;
         }
 
         .card-header h2 {
-            font-size: 1.15rem;
+            font-size: 1.1rem;
             font-weight: 700;
-            color: var(--text-main);
+            color: var(--text-primary);
         }
 
         .form-group {
@@ -449,9 +499,9 @@
 
         .form-group label {
             display: block;
-            font-size: 0.84rem;
+            font-size: 0.82rem;
             font-weight: 600;
-            color: var(--text-main);
+            color: var(--text-primary);
             margin-bottom: 6px;
         }
 
@@ -465,23 +515,24 @@
             top: 50%;
             transform: translateY(-50%);
             color: var(--text-muted);
-            font-size: 0.9rem;
+            font-size: 0.88rem;
         }
 
         .form-control {
             width: 100%;
-            padding: 11px 14px 11px 40px;
+            padding: 10px 14px 10px 40px;
             border: 1px solid var(--input-border);
             border-radius: var(--radius-md);
-            font-size: 0.9rem;
-            color: var(--text-main);
+            font-size: 0.88rem;
+            color: var(--text-primary);
             background: var(--input-bg);
             outline: none;
         }
 
         .form-control:focus {
             border-color: var(--primary);
-            box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.25);
+            box-shadow: 0 0 0 3px var(--primary-focus);
+            background: var(--bg-surface);
         }
 
         select.form-control {
@@ -491,7 +542,7 @@
         textarea.form-control {
             padding: 10px 14px;
             resize: vertical;
-            min-height: 80px;
+            min-height: 85px;
         }
 
         .btn {
@@ -499,14 +550,13 @@
             padding: 11px 18px;
             border-radius: var(--radius-md);
             border: none;
-            font-size: 0.9rem;
+            font-size: 0.88rem;
             font-weight: 600;
             cursor: pointer;
             display: inline-flex;
             align-items: center;
             justify-content: center;
             gap: 8px;
-            transition: all 0.2s ease;
         }
 
         .btn-primary {
@@ -520,16 +570,16 @@
         }
 
         .btn-cancel {
-            background: var(--input-bg);
+            background: var(--bg-body);
             color: var(--text-muted);
             margin-top: 10px;
             display: none;
-            border: 1px solid var(--card-border);
+            border: 1px solid var(--border-subtle);
         }
 
         .btn-cancel:hover {
-            background: var(--card-border);
-            color: var(--text-main);
+            background: var(--border-subtle);
+            color: var(--text-primary);
         }
 
         /* Filter Tabs */
@@ -540,48 +590,46 @@
             overflow-x: auto;
             padding-bottom: 8px;
             margin-bottom: 16px;
-            scrollbar-width: thin;
         }
 
         .filter-tab {
             padding: 8px 16px;
-            border-radius: 20px;
-            border: 1px solid var(--card-border);
-            background: var(--card-bg);
-            color: var(--text-muted);
+            border-radius: 30px;
+            border: 1px solid var(--border-subtle);
+            background: var(--bg-surface);
+            color: var(--text-secondary);
             font-size: 0.82rem;
             font-weight: 600;
             cursor: pointer;
             white-space: nowrap;
             display: inline-flex;
             align-items: center;
-            gap: 6px;
-            transition: all 0.2s ease;
+            gap: 7px;
         }
 
         .filter-tab:hover {
             border-color: var(--primary);
-            color: var(--text-main);
+            color: var(--primary);
         }
 
         .filter-tab.active {
             background: var(--primary);
             color: white;
             border-color: var(--primary);
-            box-shadow: 0 4px 12px rgba(99, 102, 241, 0.35);
+            box-shadow: 0 4px 12px rgba(79, 70, 229, 0.3);
         }
 
         .filter-tab .badge-count {
-            background: rgba(255, 255, 255, 0.2);
+            background: rgba(0, 0, 0, 0.08);
             padding: 1px 7px;
             border-radius: 12px;
             font-size: 0.72rem;
             font-weight: 700;
         }
 
-        .filter-tab:not(.active) .badge-count {
-            background: var(--input-bg);
-            color: var(--text-muted);
+        .filter-tab.active .badge-count {
+            background: rgba(255, 255, 255, 0.25);
+            color: white;
         }
 
         /* Toolbar & Controls */
@@ -596,7 +644,7 @@
 
         .search-field {
             flex: 1;
-            min-width: 250px;
+            min-width: 260px;
             position: relative;
         }
 
@@ -610,17 +658,18 @@
 
         .search-field input {
             width: 100%;
-            padding: 10px 14px 10px 42px;
-            border: 1px solid var(--card-border);
+            padding: 10px 14px 10px 40px;
+            border: 1px solid var(--border-subtle);
             border-radius: var(--radius-md);
-            background: var(--card-bg);
-            color: var(--text-main);
-            font-size: 0.88rem;
+            background: var(--bg-surface);
+            color: var(--text-primary);
+            font-size: 0.86rem;
             outline: none;
         }
 
         .search-field input:focus {
             border-color: var(--primary);
+            box-shadow: 0 0 0 3px var(--primary-focus);
         }
 
         .toolbar-actions {
@@ -632,19 +681,20 @@
 
         .sort-select {
             padding: 9px 14px;
-            border: 1px solid var(--card-border);
+            border: 1px solid var(--border-subtle);
             border-radius: var(--radius-md);
-            background: var(--card-bg);
-            color: var(--text-main);
+            background: var(--bg-surface);
+            color: var(--text-primary);
             font-size: 0.84rem;
             outline: none;
             cursor: pointer;
+            font-weight: 500;
         }
 
         .btn-toolbar {
-            background: var(--card-bg);
-            color: var(--text-main);
-            border: 1px solid var(--card-border);
+            background: var(--bg-surface);
+            color: var(--text-primary);
+            border: 1px solid var(--border-subtle);
             padding: 9px 14px;
             border-radius: var(--radius-md);
             font-size: 0.84rem;
@@ -672,10 +722,10 @@
 
         /* Data Table */
         .table-container {
-            background: var(--card-bg);
+            background: var(--bg-surface);
             border-radius: var(--radius-lg);
-            border: 1px solid var(--card-border);
-            box-shadow: var(--shadow-md);
+            border: 1px solid var(--border-subtle);
+            box-shadow: var(--card-shadow);
             overflow-x: auto;
         }
 
@@ -683,17 +733,17 @@
             width: 100%;
             border-collapse: collapse;
             text-align: left;
-            min-width: 780px;
+            min-width: 860px;
         }
 
         thead {
-            background: var(--input-bg);
-            border-bottom: 1px solid var(--card-border);
+            background: var(--table-header-bg);
+            border-bottom: 1px solid var(--border-subtle);
         }
 
         th {
             padding: 13px 16px;
-            font-size: 0.74rem;
+            font-size: 0.72rem;
             font-weight: 700;
             text-transform: uppercase;
             letter-spacing: 0.8px;
@@ -701,59 +751,61 @@
         }
 
         tbody tr {
-            border-bottom: 1px solid var(--card-border);
-            transition: background 0.15s ease;
+            border-bottom: 1px solid var(--border-subtle);
         }
 
         tbody tr:hover {
-            background: var(--table-hover);
+            background: var(--table-row-hover);
         }
 
         td {
             padding: 12px 16px;
             font-size: 0.88rem;
-            color: var(--text-main);
+            color: var(--text-primary);
             vertical-align: middle;
         }
 
         .serial-badge {
-            width: 28px;
-            height: 28px;
+            width: 26px;
+            height: 26px;
             border-radius: 50%;
-            background: var(--stat-purple-bg);
-            color: var(--stat-purple);
+            background: var(--stat-blue-bg);
+            color: var(--stat-blue-text);
             display: inline-flex;
             align-items: center;
             justify-content: center;
             font-weight: 700;
-            font-size: 0.78rem;
+            font-size: 0.75rem;
         }
 
         .phone-badge {
-            font-family: monospace;
-            background: var(--input-bg);
+            font-family: 'JetBrains Mono', monospace;
+            background: var(--bg-body);
             padding: 4px 8px;
             border-radius: 6px;
-            font-size: 0.82rem;
-            color: var(--text-muted);
+            font-size: 0.8rem;
+            color: var(--text-secondary);
             display: inline-flex;
             align-items: center;
             gap: 5px;
+            border: 1px solid var(--border-subtle);
         }
 
         .amount-tag {
             font-weight: 700;
-            color: #10b981;
+            color: #059669;
+            font-family: 'JetBrains Mono', monospace;
         }
 
         .qty-tag {
             display: inline-block;
             padding: 2px 9px;
             background: var(--stat-purple-bg);
-            color: var(--stat-purple);
+            color: var(--stat-purple-text);
             border-radius: 20px;
             font-weight: 600;
-            font-size: 0.78rem;
+            font-size: 0.76rem;
+            border: 1px solid var(--stat-purple-border);
         }
 
         /* Status & Feedback Badges */
@@ -761,37 +813,47 @@
             display: inline-flex;
             align-items: center;
             gap: 6px;
-            padding: 4px 10px;
+            padding: 3px 9px;
             border-radius: 20px;
-            font-size: 0.78rem;
+            font-size: 0.76rem;
             font-weight: 600;
         }
 
         .status-badge.active {
-            background: rgba(16, 185, 129, 0.15);
-            color: #34d399;
-            border: 1px solid rgba(16, 185, 129, 0.3);
+            background: var(--stat-green-bg);
+            color: var(--stat-green-text);
+            border: 1px solid var(--stat-green-border);
         }
 
         .status-badge.followup {
-            background: rgba(245, 158, 11, 0.15);
-            color: #fbbf24;
-            border: 1px solid rgba(245, 158, 11, 0.3);
+            background: var(--stat-amber-bg);
+            color: var(--stat-amber-text);
+            border: 1px solid var(--stat-amber-border);
         }
 
         .status-badge.issue {
-            background: rgba(239, 68, 68, 0.15);
-            color: #f87171;
-            border: 1px solid rgba(239, 68, 68, 0.3);
+            background: var(--stat-rose-bg);
+            color: var(--stat-rose-text);
+            border: 1px solid var(--stat-rose-border);
         }
 
         .status-badge.disconnected {
+            background: #f1f5f9;
+            color: #64748b;
+            border: 1px solid #cbd5e1;
+        }
+        :root[data-theme="dark"] .status-badge.disconnected {
             background: rgba(148, 163, 184, 0.15);
             color: #94a3b8;
             border: 1px solid rgba(148, 163, 184, 0.3);
         }
 
         .status-badge.resolved {
+            background: #ecfeff;
+            color: #0891b2;
+            border: 1px solid #a5f3fc;
+        }
+        :root[data-theme="dark"] .status-badge.resolved {
             background: rgba(6, 182, 212, 0.15);
             color: #22d3ee;
             border: 1px solid rgba(6, 182, 212, 0.3);
@@ -799,7 +861,7 @@
 
         .crm-summary-snippet {
             margin-top: 4px;
-            font-size: 0.75rem;
+            font-size: 0.74rem;
             color: var(--text-muted);
             max-width: 220px;
             overflow: hidden;
@@ -807,11 +869,12 @@
             white-space: nowrap;
             display: flex;
             align-items: center;
-            gap: 4px;
+            gap: 5px;
         }
 
         .crm-summary-snippet.has-issue {
-            color: #f87171;
+            color: #e11d48;
+            font-weight: 500;
         }
 
         .action-cell {
@@ -830,34 +893,84 @@
             align-items: center;
             justify-content: center;
             font-size: 0.85rem;
-            transition: all 0.2s ease;
         }
 
         .btn-crm {
-            background: rgba(99, 102, 241, 0.15);
-            color: #818cf8;
+            background: rgba(79, 70, 229, 0.12);
+            color: #4f46e5;
+            border: 1px solid rgba(79, 70, 229, 0.2);
         }
         .btn-crm:hover {
-            background: #6366f1;
+            background: #4f46e5;
             color: white;
-            transform: scale(1.06);
+            transform: scale(1.05);
         }
 
         .btn-wa {
-            background: rgba(37, 211, 102, 0.15);
-            color: #25d366;
+            background: rgba(37, 211, 102, 0.12);
+            color: #16a34a;
+            border: 1px solid rgba(37, 211, 102, 0.25);
         }
         .btn-wa:hover {
             background: #25d366;
             color: white;
-            transform: scale(1.06);
+            transform: scale(1.05);
         }
 
-        .btn-edit { background: rgba(14, 165, 233, 0.15); color: #38bdf8; }
-        .btn-edit:hover { background: #0284c7; color: white; transform: scale(1.06); }
+        .btn-edit {
+            background: rgba(14, 165, 233, 0.12);
+            color: #0284c7;
+            border: 1px solid rgba(14, 165, 233, 0.2);
+        }
+        .btn-edit:hover {
+            background: #0284c7;
+            color: white;
+            transform: scale(1.05);
+        }
 
-        .btn-delete { background: rgba(239, 68, 68, 0.15); color: #f87171; }
-        .btn-delete:hover { background: #dc2626; color: white; transform: scale(1.06); }
+        .btn-delete {
+            background: rgba(239, 68, 68, 0.12);
+            color: #dc2626;
+            border: 1px solid rgba(239, 68, 68, 0.2);
+        }
+        .btn-delete:hover {
+            background: #dc2626;
+            color: white;
+            transform: scale(1.05);
+        }
+
+        /* Empty State */
+        .empty-state-box {
+            text-align: center;
+            padding: 45px 20px;
+            color: var(--text-muted);
+        }
+
+        .empty-state-icon {
+            width: 52px;
+            height: 52px;
+            border-radius: 50%;
+            background: var(--bg-body);
+            border: 1px solid var(--border-subtle);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 12px;
+            font-size: 1.4rem;
+            color: var(--text-muted);
+        }
+
+        .btn-reset-filters {
+            margin-top: 12px;
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 7px 16px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            cursor: pointer;
+        }
 
         /* General Modal System */
         .modal-overlay {
@@ -876,39 +989,40 @@
         }
 
         .modal-card {
-            background: var(--card-bg);
-            border: 1px solid var(--card-border);
+            background: var(--bg-surface);
+            border: 1px solid var(--border-subtle);
             border-radius: var(--radius-lg);
             width: 100%;
-            max-width: 620px;
+            max-width: 600px;
             max-height: 90vh;
             display: flex;
             flex-direction: column;
-            box-shadow: var(--shadow-lg);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
             overflow: hidden;
-            animation: modalFadeIn 0.25s ease-out;
+            animation: modalFadeIn 0.2s ease-out;
         }
 
         @keyframes modalFadeIn {
-            from { opacity: 0; transform: scale(0.96) translateY(10px); }
-            to { opacity: 1; transform: scale(1) translateY(0); }
+            from { opacity: 0; transform: scale(0.97) translateY(8px); }
+            to   { opacity: 1; transform: scale(1) translateY(0); }
         }
 
         .modal-header {
-            padding: 20px 24px;
-            border-bottom: 1px solid var(--card-border);
+            padding: 18px 24px;
+            border-bottom: 1px solid var(--border-subtle);
             display: flex;
             align-items: center;
             justify-content: space-between;
-            background: var(--crm-card-header);
+            background: var(--table-header-bg);
         }
 
         .modal-title-box h3 {
-            font-size: 1.15rem;
+            font-size: 1.1rem;
             font-weight: 700;
             display: flex;
             align-items: center;
-            gap: 9px;
+            gap: 8px;
+            color: var(--text-primary);
         }
 
         .modal-title-box p {
@@ -932,31 +1046,31 @@
         }
 
         .btn-close-modal:hover {
-            background: var(--card-border);
-            color: var(--text-main);
+            background: var(--border-subtle);
+            color: var(--text-primary);
         }
 
         .modal-body {
-            padding: 24px;
+            padding: 22px 24px;
             overflow-y: auto;
             flex: 1;
         }
 
         .modal-footer {
-            padding: 16px 24px;
-            border-top: 1px solid var(--card-border);
+            padding: 14px 24px;
+            border-top: 1px solid var(--border-subtle);
             display: flex;
             justify-content: flex-end;
             gap: 10px;
-            background: var(--input-bg);
+            background: var(--table-header-bg);
         }
 
         .customer-quick-info {
-            background: var(--input-bg);
-            border: 1px solid var(--card-border);
+            background: var(--bg-body);
+            border: 1px solid var(--border-subtle);
             border-radius: var(--radius-md);
             padding: 14px 18px;
-            margin-bottom: 20px;
+            margin-bottom: 18px;
             display: flex;
             align-items: center;
             justify-content: space-between;
@@ -972,7 +1086,7 @@
         .btn-quick-contact {
             padding: 6px 14px;
             border-radius: 20px;
-            font-size: 0.82rem;
+            font-size: 0.8rem;
             font-weight: 600;
             text-decoration: none;
             display: inline-flex;
@@ -1003,24 +1117,24 @@
             flex-wrap: wrap;
             gap: 6px;
             margin-top: 8px;
-            margin-bottom: 12px;
+            margin-bottom: 10px;
         }
 
         .chip-btn {
-            background: var(--input-bg);
-            border: 1px solid var(--card-border);
-            color: var(--text-muted);
-            padding: 4px 10px;
-            border-radius: 16px;
-            font-size: 0.76rem;
+            background: var(--bg-body);
+            border: 1px solid var(--border-subtle);
+            color: var(--text-secondary);
+            padding: 3px 10px;
+            border-radius: 14px;
+            font-size: 0.74rem;
             cursor: pointer;
-            transition: all 0.15s ease;
+            font-weight: 500;
         }
 
         .chip-btn:hover {
             border-color: var(--primary);
-            color: var(--text-main);
-            background: rgba(99, 102, 241, 0.1);
+            color: var(--primary);
+            background: rgba(79, 70, 229, 0.08);
         }
 
         /* Print Override */
@@ -1048,9 +1162,9 @@
     <div class="login-card">
         <div class="login-brand">
             <h2>Sanvee's by Tony</h2>
-            <p>Authentication Required</p>
+            <p>Enterprise Customer CRM & Portal</p>
         </div>
-        <div class="error-msg" id="loginError">ভুল ইউজারনেম অথবা পাসওয়ার্ড! আবার চেষ্টা করুন।</div>
+        <div class="error-msg" id="loginError">Invalid credentials. Please verify username and password.</div>
         <form id="loginForm">
             <div class="form-group" style="text-align: left;">
                 <label>Username</label>
@@ -1066,8 +1180,8 @@
                     <input type="password" id="password" class="form-control" placeholder="••••••••" required>
                 </div>
             </div>
-            <button type="submit" class="btn btn-primary" style="margin-top: 10px;">
-                <i class="fa-solid fa-right-to-bracket"></i> Login to Portal
+            <button type="submit" class="btn btn-primary" style="margin-top: 12px;">
+                <i class="fa-solid fa-right-to-bracket"></i> Sign In to Dashboard
             </button>
         </form>
     </div>
@@ -1078,7 +1192,7 @@
 
     <div class="print-only-header">
         <h1 style="font-family: 'Playfair Display', serif; font-size: 24pt;">Sanvee's by Tony</h1>
-        <p>Customer Relationship & Disconnect Feedback Report</p>
+        <p>Customer Database & CRM Report</p>
         <p style="font-size: 9pt; color: #555;">Generated: <span id="printDate"></span></p>
     </div>
 
@@ -1086,17 +1200,17 @@
     <header class="brand-header">
         <div class="brand-info">
             <h1>Sanvee's by Tony</h1>
-            <p><i class="fa-solid fa-cloud"></i> Cloud CRM & Customer Relationship Management</p>
+            <p><i class="fa-solid fa-cloud-arrow-up"></i> Enterprise Customer Relationship & Churn Management</p>
         </div>
         <div class="header-actions">
-            <!-- Admin Settings & Password Manager -->
-            <button class="header-btn" id="adminSettingsBtn" onclick="openSettingsModal()" title="Admin & Security Settings">
+            <!-- Settings & Password Manager -->
+            <button class="header-btn" id="adminSettingsBtn" onclick="openSettingsModal()" title="Security & Admin Settings">
                 <i class="fa-solid fa-gear"></i> Settings & Passwords
             </button>
 
             <!-- Theme Toggle Button -->
             <button class="theme-toggle" id="themeToggleBtn" onclick="toggleTheme()" title="Toggle Dark/Light Mode">
-                <i class="fa-solid fa-sun" id="themeIcon"></i>
+                <i class="fa-solid fa-moon" id="themeIcon"></i>
             </button>
 
             <!-- Role Badge -->
@@ -1105,7 +1219,7 @@
             </div>
 
             <!-- Logout Button -->
-            <button class="btn-logout" onclick="logoutUser()" title="Logout">
+            <button class="btn-logout" onclick="logoutUser()" title="Sign Out">
                 <i class="fa-solid fa-power-off"></i>
             </button>
         </div>
@@ -1118,76 +1232,89 @@
                 <i class="fa-solid fa-bell"></i>
             </div>
             <div>
-                <strong style="font-size: 0.95rem;">ফলো-আপ রিমাইন্ডার (Follow-Up Due Today)</strong>
-                <p style="font-size: 0.82rem; color: var(--text-muted); margin-top: 2px;">
-                    আজ <span id="dueFollowUpCount" style="font-weight: 700; color: #f59e0b;">0</span> জন কাস্টমারের সাথে কথা বলার শিডিউল রয়েছে। কাস্টমারদের দেখতে এখানে ক্লিক করুন।
+                <strong style="font-size: 0.92rem;">Customer Follow-Up Due Today</strong>
+                <p style="font-size: 0.8rem; color: var(--text-secondary); margin-top: 2px;">
+                    You have <span id="dueFollowUpCount" style="font-weight: 700; color: #d97706;">0</span> customer(s) scheduled for follow-up today. Click to inspect list.
                 </p>
             </div>
         </div>
-        <span class="banner-badge">View List <i class="fa-solid fa-arrow-right"></i></span>
+        <span class="banner-badge">View Customers <i class="fa-solid fa-arrow-right"></i></span>
     </div>
 
     <!-- Top Dashboard Stats -->
     <div class="stats-grid">
+        <!-- 1. Total Customers -->
         <div class="stat-card">
-            <div class="stat-icon purple"><i class="fa-solid fa-users"></i></div>
+            <div class="stat-icon blue"><i class="fa-solid fa-users"></i></div>
             <div class="stat-details">
                 <h3>Total Customers</h3>
-                <p id="totalCustomers">0</p>
+                <div class="stat-value" id="totalCustomers">0</div>
             </div>
         </div>
+
+        <!-- 2. Active Clients -->
         <div class="stat-card">
             <div class="stat-icon green"><i class="fa-solid fa-user-check"></i></div>
             <div class="stat-details">
                 <h3>Active Clients</h3>
-                <p id="activeCustomers">0</p>
+                <div class="stat-value" id="activeCustomers">0</div>
             </div>
         </div>
+
+        <!-- 3. Disconnected / Inactive -->
         <div class="stat-card">
-            <div class="stat-icon danger"><i class="fa-solid fa-user-xmark"></i></div>
+            <div class="stat-icon rose"><i class="fa-solid fa-user-xmark"></i></div>
             <div class="stat-details">
-                <h3>Disconnected / Inactive</h3>
-                <p id="disconnectedCustomers">0</p>
+                <h3>Disconnected</h3>
+                <div class="stat-value" id="disconnectedCustomers">0</div>
             </div>
         </div>
+
+        <!-- 4. Issues / Complaints -->
         <div class="stat-card">
-            <div class="stat-icon gold"><i class="fa-solid fa-triangle-exclamation"></i></div>
+            <div class="stat-icon amber"><i class="fa-solid fa-triangle-exclamation"></i></div>
             <div class="stat-details">
-                <h3>Issues / Follow-up</h3>
-                <p id="issuesCount">0</p>
+                <h3>Issues & Follow-up</h3>
+                <div class="stat-value" id="issuesCount">0</div>
             </div>
         </div>
-        <div class="stat-card">
-            <div class="stat-icon pink"><i class="fa-solid fa-bangladeshi-taka-sign"></i></div>
+
+        <!-- 5. Total Revenue (Crystal Clear Number & Currency) -->
+        <div class="stat-card" style="grid-column: span 1;">
+            <div class="stat-icon emerald"><i class="fa-solid fa-bangladeshi-taka-sign"></i></div>
             <div class="stat-details">
                 <h3>Total Revenue</h3>
-                <p id="totalRevenue">৳ 0</p>
+                <div class="revenue-amount-box" title="Total Revenue in Bangladeshi Taka">
+                    <span class="revenue-currency">৳</span>
+                    <span class="revenue-number" id="totalRevenue">0</span>
+                </div>
+                <span class="revenue-subtag" id="compactRevenue">৳ 0</span>
             </div>
         </div>
+
+        <!-- 6. Parcels Shipped -->
         <div class="stat-card">
-            <div class="stat-icon cyan"><i class="fa-solid fa-box-open"></i></div>
+            <div class="stat-icon purple"><i class="fa-solid fa-box-open"></i></div>
             <div class="stat-details">
                 <h3>Parcels Shipped</h3>
-                <p id="totalParcels">0</p>
+                <div class="stat-value" id="totalParcels">0</div>
             </div>
         </div>
     </div>
 
-    <!-- Main Grid: Form + Table -->
+    <!-- Main Grid: Add Customer Form + Data Table -->
     <div class="main-grid">
         <!-- Customer Registration / Edit Form -->
         <div class="card">
             <div class="card-header">
-                <div class="card-header-left">
-                    <i class="fa-solid fa-user-plus" id="formHeaderIcon"></i>
-                    <h2 id="formHeaderTitle">Add Customer</h2>
-                </div>
+                <i class="fa-solid fa-user-plus" id="formHeaderIcon"></i>
+                <h2 id="formHeaderTitle">Add Customer</h2>
             </div>
             <form id="customerForm">
                 <input type="hidden" id="editKeyId" value="">
 
                 <div class="form-group">
-                    <label>Customer Name</label>
+                    <label>Customer Full Name</label>
                     <div class="input-wrapper">
                         <i class="fa-solid fa-user"></i>
                         <input type="text" id="name" class="form-control" placeholder="e.g. Tanzim Ahmed" required>
@@ -1203,7 +1330,7 @@
                 </div>
 
                 <div class="form-group">
-                    <label>Total Purchase (BDT)</label>
+                    <label>Total Purchase Amount (BDT / ৳)</label>
                     <div class="input-wrapper">
                         <i class="fa-solid fa-money-bill-wave"></i>
                         <input type="number" id="amount" class="form-control" placeholder="0" min="0" required>
@@ -1219,13 +1346,13 @@
                 </div>
 
                 <div class="form-group">
-                    <label>Customer Status</label>
+                    <label>Initial Customer Status</label>
                     <select id="initialStatus" class="form-control" style="padding-left: 14px;">
-                        <option value="active">🟢 Active (নিয়মিত ক্রেতা)</option>
-                        <option value="followup">🟡 Follow-up Needed (যোগাযোগ প্রয়োজন)</option>
-                        <option value="issue">⚠️ Issue / Unhappy (সমস্যা বা অভিযোগ আছে)</option>
-                        <option value="disconnected">🔴 Disconnected / Inactive (যোগাযোগ নেই)</option>
-                        <option value="resolved">🤝 Resolved / Re-engaged (সমাধান হয়েছে)</option>
+                        <option value="active">🟢 Active (Regular Buyer)</option>
+                        <option value="followup">🟡 Follow-up Needed (Pending Call)</option>
+                        <option value="issue">⚠️ Issue / Unhappy (Complaint Reported)</option>
+                        <option value="disconnected">🔴 Disconnected / Inactive (Stopped Ordering)</option>
+                        <option value="resolved">🤝 Resolved / Re-engaged</option>
                     </select>
                 </div>
 
@@ -1243,19 +1370,19 @@
             <!-- Status Filter Tabs -->
             <div class="filter-tabs-container">
                 <button class="filter-tab active" id="tab_all" onclick="setFilter('all')">
-                    <i class="fa-solid fa-list-check"></i> সকল গ্রাহক <span class="badge-count" id="count_all">0</span>
+                    <i class="fa-solid fa-list-check"></i> All Customers <span class="badge-count" id="count_all">0</span>
                 </button>
                 <button class="filter-tab" id="tab_active" onclick="setFilter('active')">
-                    <i class="fa-solid fa-circle-check" style="color: #34d399;"></i> একটিভ <span class="badge-count" id="count_active">0</span>
+                    <i class="fa-solid fa-circle-check" style="color: #059669;"></i> Active <span class="badge-count" id="count_active">0</span>
                 </button>
                 <button class="filter-tab" id="tab_followup" onclick="setFilter('followup')">
-                    <i class="fa-solid fa-clock" style="color: #fbbf24;"></i> ফলো-আপ প্রয়োজন <span class="badge-count" id="count_followup">0</span>
+                    <i class="fa-solid fa-clock" style="color: #d97706;"></i> Follow-up Due <span class="badge-count" id="count_followup">0</span>
                 </button>
                 <button class="filter-tab" id="tab_issue" onclick="setFilter('issue')">
-                    <i class="fa-solid fa-triangle-exclamation" style="color: #f87171;"></i> সমস্যা/অভিযোগ <span class="badge-count" id="count_issue">0</span>
+                    <i class="fa-solid fa-triangle-exclamation" style="color: #e11d48;"></i> Issues / Complaints <span class="badge-count" id="count_issue">0</span>
                 </button>
                 <button class="filter-tab" id="tab_disconnected" onclick="setFilter('disconnected')">
-                    <i class="fa-solid fa-user-xmark" style="color: #94a3b8;"></i> যোগাযোগ নেই <span class="badge-count" id="count_disconnected">0</span>
+                    <i class="fa-solid fa-user-xmark" style="color: #64748b;"></i> Disconnected <span class="badge-count" id="count_disconnected">0</span>
                 </button>
             </div>
 
@@ -1263,12 +1390,12 @@
             <div class="toolbar">
                 <div class="search-field">
                     <i class="fa-solid fa-magnifying-glass"></i>
-                    <input type="text" id="searchInput" onkeyup="applyFilterAndRender()" placeholder="নাম, ফোন, ডিসকানেক্ট কারণ বা নোট লিখে খুঁজুন...">
+                    <input type="text" id="searchInput" onkeyup="applyFilterAndRender()" placeholder="Search by name, phone, reason, or notes...">
                 </div>
 
                 <div class="toolbar-actions">
                     <select id="sortSelect" class="sort-select" onchange="applyFilterAndRender()">
-                        <option value="newest">🕒 Newest Added First</option>
+                        <option value="newest">🕒 Newest Added</option>
                         <option value="spent_desc">💎 Highest Spenders (VIP)</option>
                         <option value="parcels_desc">📦 Most Parcels</option>
                         <option value="followup_due">🔔 Next Follow-up Date</option>
@@ -1293,14 +1420,14 @@
                             <th>Phone</th>
                             <th>Total Spent</th>
                             <th>Parcels</th>
-                            <th>Status & CRM Notes</th>
-                            <th style="text-align: right; min-width: 130px;">Action</th>
+                            <th>Status & CRM Feedback</th>
+                            <th style="text-align: right; min-width: 140px;">Action</th>
                         </tr>
                     </thead>
                     <tbody id="tableBody">
                         <tr>
-                            <td colspan="7" style="text-align:center; padding: 35px; color: var(--text-muted);">
-                                <i class="fa-solid fa-circle-notch fa-spin"></i> Loading Firebase Cloud Data...
+                            <td colspan="7" style="text-align:center; padding: 40px; color: var(--text-muted);">
+                                <i class="fa-solid fa-circle-notch fa-spin"></i> Loading Customer Records...
                             </td>
                         </tr>
                     </tbody>
@@ -1317,8 +1444,8 @@
     <div class="modal-card">
         <div class="modal-header">
             <div class="modal-title-box">
-                <h3><i class="fa-solid fa-handshake-angle" style="color: var(--primary);"></i> কাস্টমার রিলেশনশিপ ও ফিডব্যাক লগ</h3>
-                <p>কাস্টমারের সাথে কথা বলে কারণ ও আমাদের কোনো সার্ভিস ইস্যু থাকলে তা এন্ট্রি করুন</p>
+                <h3><i class="fa-solid fa-handshake-angle" style="color: var(--primary);"></i> Customer Relationship & Inactivity Log</h3>
+                <p>Record call conversation details, inactivity reasons, and internal service issues</p>
             </div>
             <button class="btn-close-modal" onclick="closeCrmModal()"><i class="fa-solid fa-xmark"></i></button>
         </div>
@@ -1336,8 +1463,8 @@
                     <a href="#" id="crmQuickWa" target="_blank" class="btn-quick-contact btn-quick-wa" title="Open WhatsApp Chat">
                         <i class="fa-brands fa-whatsapp"></i> WhatsApp
                     </a>
-                    <a href="#" id="crmQuickCall" class="btn-quick-contact btn-quick-call" title="Call Customer">
-                        <i class="fa-solid fa-phone"></i> Call
+                    <a href="#" id="crmQuickCall" class="btn-quick-contact btn-quick-call" title="Direct Phone Call">
+                        <i class="fa-solid fa-phone"></i> Direct Call
                     </a>
                 </div>
             </div>
@@ -1347,74 +1474,74 @@
 
                 <!-- Current Connection Status -->
                 <div class="form-group">
-                    <label>কাস্টমার স্ট্যাটাস (Customer Status)</label>
+                    <label>Customer Relationship Status</label>
                     <select id="crmStatus" class="form-control" style="padding-left: 14px;" onchange="handleStatusChange()">
-                        <option value="active">🟢 Active (নিয়মিত ও সন্তুষ্ট ক্রেতা)</option>
-                        <option value="followup">🟡 Follow-up Needed (কথা বলা বা ফলো-আপ বাকি)</option>
-                        <option value="issue">⚠️ Issue Reported (আমাদের সার্ভিসে সমস্যা / অসন্তুষ্ট)</option>
-                        <option value="disconnected">🔴 Disconnected / Inactive (যোগাযোগ নেই / বিচ্ছিন্ন)</option>
-                        <option value="resolved">🤝 Resolved (সমস্যার সমাধান হয়েছে / পুনরায় সন্তুষ্ট)</option>
+                        <option value="active">🟢 Active (Regular & Satisfied Buyer)</option>
+                        <option value="followup">🟡 Follow-up Needed (Pending Communication)</option>
+                        <option value="issue">⚠️ Issue Reported (Service/Product Complaint)</option>
+                        <option value="disconnected">🔴 Disconnected / Inactive (Stopped Ordering)</option>
+                        <option value="resolved">🤝 Resolved (Issue Solved / Reconnected)</option>
                     </select>
                 </div>
 
                 <!-- Disconnect / Inactivity Reason -->
                 <div class="form-group">
-                    <label>কেন যোগাযোগ বিচ্ছিন্ন বা মেসেজ করছেন না? (Reason for Inactivity)</label>
+                    <label>Reason for Inactivity or Disconnection</label>
                     <select id="crmReasonPreset" class="form-control" style="padding-left: 14px;" onchange="handlePresetReason()">
-                        <option value="">-- কারণ নির্বাচন করুন (অথবা নিচে লিখুন) --</option>
-                        <option value="দাম বেশি মনে হচ্ছে">দাম বেশি মনে হচ্ছে (Pricing too high)</option>
-                        <option value="প্রোডাক্ট কোয়ালিটি পছন্দ হয়নি">প্রোডাক্ট কোয়ালিটি পছন্দ হয়নি (Quality issue)</option>
-                        <option value="ডেলিভারিতে দেরি বা ডেলিভারি বয় সমস্যা">ডেলিভারিতে দেরি বা ডেলিভারি বয় সমস্যা (Delivery delay/trouble)</option>
-                        <option value="দেরিতে রিপ্লাই বা খারাপ আচরণ">দেরিতে রিপ্লাই বা কাস্টমার সার্ভিস ইস্যু (Customer support issue)</option>
-                        <option value="অন্য কোথাও থেকে কেনাকাটা করছে">অন্য কোথাও থেকে কেনাকাটা করছে (Switched to competitor)</option>
-                        <option value="বর্তমানে প্রয়োজন নেই / কেনা বন্ধ">বর্তমানে প্রয়োজন নেই / কেনা বন্ধ (No need currently)</option>
-                        <option value="কল বা মেসেজের সাড়া দেয় না">কল বা মেসেজের সাড়া দেয় না (No response / unreachable)</option>
-                        <option value="ভুল নম্বর বা বন্ধ">ভুল নম্বর বা সিম বন্ধ (Invalid / switched off)</option>
-                        <option value="অন্যান্য কারণ">অন্যান্য কারণ (Custom reason)</option>
+                        <option value="">-- Select a preset reason or enter below --</option>
+                        <option value="Pricing feels high / budget constraint">Pricing feels high / budget constraint</option>
+                        <option value="Product quality or defect issue">Product quality or defect issue</option>
+                        <option value="Delivery delay or courier delivery boy trouble">Delivery delay or courier delivery boy trouble</option>
+                        <option value="Delayed support response or miscommunication">Delayed support response or miscommunication</option>
+                        <option value="Switched to another store / competitor">Switched to another store / competitor</option>
+                        <option value="No current need / stopped buying">No current need / stopped buying</option>
+                        <option value="Did not answer call or message">Did not answer call or message</option>
+                        <option value="Invalid phone number / SIM switched off">Invalid phone number / SIM switched off</option>
+                        <option value="Other custom reason">Other custom reason</option>
                     </select>
 
                     <div class="reason-preset-chips">
-                        <span class="chip-btn" onclick="setReasonChip('দাম বেশি মনে হচ্ছে')">দাম বেশি</span>
-                        <span class="chip-btn" onclick="setReasonChip('কোয়ালিটি পছন্দ হয়নি')">কোয়ালিটি ইস্যু</span>
-                        <span class="chip-btn" onclick="setReasonChip('ডেলিভারিতে ঝামেলা')">ডেলিভারি সমস্যা</span>
-                        <span class="chip-btn" onclick="setReasonChip('প্রয়োজন নেই')">প্রয়োজন নেই</span>
-                        <span class="chip-btn" onclick="setReasonChip('কল ধরে না')">কল ধরে না</span>
+                        <span class="chip-btn" onclick="setReasonChip('Pricing feels high')">High Price</span>
+                        <span class="chip-btn" onclick="setReasonChip('Quality issue')">Quality Issue</span>
+                        <span class="chip-btn" onclick="setReasonChip('Delivery delay')">Delivery Delay</span>
+                        <span class="chip-btn" onclick="setReasonChip('No current need')">No Need</span>
+                        <span class="chip-btn" onclick="setReasonChip('Unreachable / Did not answer')">No Answer</span>
                     </div>
 
-                    <input type="text" id="crmCustomReason" class="form-control" style="padding-left: 14px;" placeholder="বিস্তারিত কারণ লিখুন...">
+                    <input type="text" id="crmCustomReason" class="form-control" style="padding-left: 14px;" placeholder="Type detailed reason...">
                 </div>
 
                 <!-- Internal Business Issues -->
                 <div class="form-group">
-                    <label>আমাদের দিক থেকে কোনো সমস্যা ছিল কি? (Our Internal Issue?)</label>
+                    <label>Was there any service or internal issue from our side?</label>
                     <select id="crmBusinessIssue" class="form-control" style="padding-left: 14px;">
-                        <option value="না, কোনো সমস্যা পাওয়া যায়নি">না, কোনো সার্ভিস ইস্যু পাওয়া যায়নি (কাস্টমারের ব্যক্তিগত কারণ)</option>
-                        <option value="হ্যাঁ - ডেলিভারি পার্টনার সমস্যা / অতিরিক্ত বিলম্ব">হ্যাঁ - ডেলিভারি পার্টনার সমস্যা / অতিরিক্ত বিলম্ব</option>
-                        <option value="হ্যাঁ - প্রোডাক্টের সাইজ বা কোয়ালিটিতে অসন্তোষ">হ্যাঁ - প্রোডাক্টের সাইজ বা কোয়ালিটিতে অসন্তোষ</option>
-                        <option value="হ্যাঁ - দেরিতে মেসেজ রিপ্লাই বা কাস্টমার সাপোর্ট ঘাটতি">হ্যাঁ - দেরিতে মেসেজ রিপ্লাই বা কাস্টমার সাপোর্ট ঘাটতি</option>
-                        <option value="হ্যাঁ - প্রোডাক্টের স্টক ঘাটতি বা ভুল আইটেম প্রেরণ">হ্যাঁ - প্রোডাক্টের স্টক ঘাটতি বা ভুল আইটেম প্রেরণ</option>
-                        <option value="অন্যান্য প্রাতিষ্ঠানিক সমস্যা">অন্যান্য প্রাতিষ্ঠানিক সমস্যা</option>
+                        <option value="No internal issue detected (Customer's personal reason)">No internal issue detected (Customer's personal reason)</option>
+                        <option value="Yes - Courier partner delay or delivery issue">Yes - Courier partner delay or delivery issue</option>
+                        <option value="Yes - Product size mismatch or defect">Yes - Product size mismatch or defect</option>
+                        <option value="Yes - Delayed chat response or support deficiency">Yes - Delayed chat response or support deficiency</option>
+                        <option value="Yes - Out of stock or incorrect item dispatched">Yes - Out of stock or incorrect item dispatched</option>
+                        <option value="Other internal operational issue">Other internal operational issue</option>
                     </select>
                 </div>
 
                 <!-- Conversation Notes -->
                 <div class="form-group">
-                    <label>কাস্টমারের সাথে আলোচনার বিস্তারিত নোট (Conversation Notes)</label>
-                    <textarea id="crmNotes" class="form-control" placeholder="কাস্টমারের সাথে কথা বলে কী জানা গেল, কী অফার দেওয়া হয়েছে বা কী পদক্ষেপ নেওয়া প্রয়োজন..."></textarea>
+                    <label>Conversation Notes & Customer Feedback</label>
+                    <textarea id="crmNotes" class="form-control" placeholder="Enter conversation details, customer feedback, offers provided, or next action steps..."></textarea>
                 </div>
 
                 <!-- Follow-up Scheduling -->
                 <div class="form-group">
-                    <label>পরবর্তী যোগাযোগের তারিখ (Next Follow-Up Date)</label>
+                    <label>Next Scheduled Follow-up Date</label>
                     <input type="date" id="crmFollowUpDate" class="form-control" style="padding-left: 14px;">
                 </div>
             </form>
         </div>
 
         <div class="modal-footer">
-            <button type="button" class="btn btn-cancel" style="display:inline-flex; width:auto;" onclick="closeCrmModal()">বাতিল</button>
+            <button type="button" class="btn btn-cancel" style="display:inline-flex; width:auto;" onclick="closeCrmModal()">Cancel</button>
             <button type="button" class="btn btn-primary" style="width:auto;" onclick="saveCrmFeedback()">
-                <i class="fa-solid fa-floppy-disk"></i> সেভ করুন (Save Feedback)
+                <i class="fa-solid fa-floppy-disk"></i> Save Feedback
             </button>
         </div>
     </div>
@@ -1425,27 +1552,27 @@
     <div class="modal-card" style="max-width: 520px;">
         <div class="modal-header">
             <div class="modal-title-box">
-                <h3><i class="fa-solid fa-shield-halved" style="color: var(--primary);"></i> অ্যাডমিন পাসওয়ার্ড ও সেটিংস</h3>
-                <p>এখানে আপনার অ্যাডমিন পাসওয়ার্ড দেখতে ও পরিবর্তন করতে পারবেন</p>
+                <h3><i class="fa-solid fa-shield-halved" style="color: var(--primary);"></i> Security & Portal Settings</h3>
+                <p>View or update login passwords and download complete backups</p>
             </div>
             <button class="btn-close-modal" onclick="closeSettingsModal()"><i class="fa-solid fa-xmark"></i></button>
         </div>
 
         <div class="modal-body">
-            <!-- Current Passwords Notice -->
-            <div style="background: var(--input-bg); border: 1px solid var(--card-border); border-radius: var(--radius-md); padding: 14px; margin-bottom: 18px; font-size: 0.85rem;">
+            <!-- Current Credentials -->
+            <div style="background: var(--bg-body); border: 1px solid var(--border-subtle); border-radius: var(--radius-md); padding: 14px; margin-bottom: 18px; font-size: 0.85rem;">
                 <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom: 6px;">
-                    <span><strong>বর্তমান Admin Username:</strong> <code>admin</code></span>
+                    <span><strong>Admin Username:</strong> <code>admin</code></span>
                 </div>
                 <div style="display:flex; justify-content:space-between; align-items:center;">
-                    <span><strong>বর্তমান Admin Password:</strong> <code id="displayAdminPass">project9</code></span>
+                    <span><strong>Admin Password:</strong> <code id="displayAdminPass">project9</code></span>
                     <button class="chip-btn" onclick="togglePassVisibility('displayAdminPass')"><i class="fa-solid fa-eye"></i> Show</button>
                 </div>
             </div>
 
             <form id="settingsForm">
                 <div class="form-group">
-                    <label>নতুন Admin পাসওয়ার্ড দিন</label>
+                    <label>New Admin Password</label>
                     <div class="input-wrapper">
                         <i class="fa-solid fa-key"></i>
                         <input type="text" id="newAdminPassword" class="form-control" placeholder="Enter new admin password" required>
@@ -1453,7 +1580,7 @@
                 </div>
 
                 <div class="form-group">
-                    <label>নতুন Staff পাসওয়ার্ড দিন</label>
+                    <label>New Staff Password</label>
                     <div class="input-wrapper">
                         <i class="fa-solid fa-lock"></i>
                         <input type="text" id="newStaffPassword" class="form-control" placeholder="Enter new staff password" required>
@@ -1462,7 +1589,7 @@
 
                 <div style="display: flex; gap: 10px; margin-top: 15px;">
                     <button type="button" class="btn btn-primary" onclick="saveNewPasswords()">
-                        <i class="fa-solid fa-check"></i> পাসওয়ার্ড আপডেট করুন
+                        <i class="fa-solid fa-check"></i> Update Passwords
                     </button>
                     <button type="button" class="btn btn-cancel" style="display:inline-flex; width:auto;" onclick="resetDefaultPasswords()">
                         Reset Defaults
@@ -1470,11 +1597,11 @@
                 </div>
             </form>
 
-            <hr style="border: 0; border-top: 1px solid var(--card-border); margin: 24px 0 16px;">
+            <hr style="border: 0; border-top: 1px solid var(--border-subtle); margin: 24px 0 16px;">
 
             <div>
-                <h4 style="font-size: 0.9rem; margin-bottom: 8px;"><i class="fa-solid fa-database"></i> ডাটাবেজ ব্যাকআপ (JSON Backup)</h4>
-                <p style="font-size: 0.8rem; color: var(--text-muted); margin-bottom: 12px;">আপনার সকল কাস্টমার ও ফিডব্যাক ডেটা অফলাইনে সুরক্ষিত রাখতে সম্পূর্ণ ডাটাবেজের ব্যাকআপ ডাউনলোড করুন।</p>
+                <h4 style="font-size: 0.9rem; margin-bottom: 6px; font-weight: 700;"><i class="fa-solid fa-database"></i> Database Offline Backup (JSON)</h4>
+                <p style="font-size: 0.8rem; color: var(--text-muted); margin-bottom: 12px;">Download an offline JSON snapshot containing all customers, orders, and CRM conversation notes.</p>
                 <button class="btn btn-toolbar" style="width: 100%; justify-content: center;" onclick="downloadJsonBackup()">
                     <i class="fa-solid fa-download"></i> Download Full JSON Backup
                 </button>
@@ -1506,8 +1633,8 @@
 
         setTimeout(() => {
             toast.style.opacity = '0';
-            toast.style.transform = 'translateX(50px)';
-            setTimeout(() => toast.remove(), 300);
+            toast.style.transform = 'translateX(40px)';
+            setTimeout(() => toast.remove(), 250);
         }, 3200);
     };
 
@@ -1529,7 +1656,7 @@
         }
     }
 
-    const savedTheme = localStorage.getItem('sanvee_theme') || 'dark';
+    const savedTheme = localStorage.getItem('sanvee_theme') || 'light';
     document.documentElement.setAttribute('data-theme', savedTheme);
     updateThemeIcon(savedTheme);
 
@@ -1569,14 +1696,14 @@
             loginOverlay.style.display = 'none';
             appWrapper.style.display = 'block';
             updateRoleBadge('admin');
-            showToast('অ্যাডমিন হিসেবে সফলভাবে লগইন হয়েছে!', 'success');
+            showToast('Signed in successfully as Administrator', 'success');
         } else if (user === 'staff' && pass === getStaffPass()) {
             currentUserRole = 'staff';
             localStorage.setItem('sanvee_user_role', 'staff');
             loginOverlay.style.display = 'none';
             appWrapper.style.display = 'block';
             updateRoleBadge('staff');
-            showToast('স্টাফ হিসেবে সফলভাবে লগইন হয়েছে!', 'success');
+            showToast('Signed in successfully as Staff', 'success');
         } else {
             loginError.style.display = 'block';
         }
@@ -1602,7 +1729,7 @@
     // Settings Modal Functions
     window.openSettingsModal = function() {
         if (currentUserRole !== 'admin') {
-            alert('শুধুমাত্র অ্যাডমিন সেটিংস পরিবর্তন করতে পারেন!');
+            alert('Only administrators can access portal settings.');
             return;
         }
         document.getElementById('displayAdminPass').innerText = getAdminPass();
@@ -1626,24 +1753,24 @@
         const newAdmin = document.getElementById('newAdminPassword').value.trim();
         const newStaff = document.getElementById('newStaffPassword').value.trim();
         if (!newAdmin || !newStaff) {
-            alert('অনুগ্রহ করে দুটি পাসওয়ার্ডই লিখুন!');
+            alert('Both admin and staff passwords must be provided.');
             return;
         }
         localStorage.setItem('sanvee_admin_pass', newAdmin);
         localStorage.setItem('sanvee_staff_pass', newStaff);
         document.getElementById('displayAdminPass').innerText = newAdmin;
-        showToast('পাসওয়ার্ড সফলভাবে আপডেট করা হয়েছে!', 'success');
-        setTimeout(() => closeSettingsModal(), 600);
+        showToast('Passwords updated successfully!', 'success');
+        setTimeout(() => closeSettingsModal(), 500);
     };
 
     window.resetDefaultPasswords = function() {
-        if (confirm('পাসওয়ার্ড ডিফল্ট (Admin: project9, Staff: staff123)-এ ফিরিয়ে নিতে চান?')) {
+        if (confirm('Reset passwords back to default (Admin: project9, Staff: staff123)?')) {
             localStorage.setItem('sanvee_admin_pass', 'project9');
             localStorage.setItem('sanvee_staff_pass', 'staff123');
             document.getElementById('displayAdminPass').innerText = 'project9';
             document.getElementById('newAdminPassword').value = 'project9';
             document.getElementById('newStaffPassword').value = 'staff123';
-            showToast('ডিফল্ট পাসওয়ার্ড রিস্টোর করা হয়েছে!', 'info');
+            showToast('Default passwords restored!', 'info');
         }
     };
 
@@ -1667,9 +1794,11 @@
     let currentCustomersList = [];
     let currentActiveFilter = 'all';
 
-    document.getElementById('printDate').innerText = new Date().toLocaleDateString('en-US');
+    document.getElementById('printDate').innerText = new Date().toLocaleDateString('en-US', {
+        year: 'numeric', month: 'short', day: 'numeric'
+    });
 
-    // Reset Add/Edit Form Helper
+    // Reset Form
     window.resetFormState = function() {
         document.getElementById('customerForm').reset();
         document.getElementById('editKeyId').value = '';
@@ -1703,14 +1832,14 @@
                 updatedAt: Date.now()
             }).then(() => {
                 resetFormState();
-                showToast('কাস্টমার তথ্য সফলভাবে আপডেট হয়েছে!', 'success');
+                showToast('Customer information updated successfully!', 'success');
             }).catch(err => {
-                showToast('ত্রুটি: ' + err.message, 'error');
+                showToast('Error: ' + err.message, 'error');
             });
         } else {
             const isDuplicate = currentCustomersList.some(c => c.phone === phone);
             if (isDuplicate) {
-                alert('এই ফোন নম্বরটি ইতিমধ্যে ডেটাবেজে নিবন্ধিত আছে!');
+                alert('This phone number is already registered in the database.');
                 return;
             }
 
@@ -1726,14 +1855,14 @@
                 createdAt: Date.now()
             }).then(() => {
                 resetFormState();
-                showToast('নতুন কাস্টমার সফলভাবে যোগ করা হয়েছে!', 'success');
+                showToast('New customer added successfully!', 'success');
             }).catch(err => {
-                showToast('ত্রুটি: ' + err.message, 'error');
+                showToast('Error: ' + err.message, 'error');
             });
         }
     });
 
-    // Populate Edit Form
+    // Populate Form for Editing
     window.populateEditForm = function(key) {
         const c = currentCustomersList.find(item => item.id === key);
         if (!c) return;
@@ -1757,12 +1886,12 @@
     // Delete Record (Admin Only)
     window.deleteCustomerFromFirebase = function(key) {
         if (currentUserRole !== 'admin') {
-            alert('শুধুমাত্র অ্যাডমিন কাস্টমার মুছে ফেলতে পারেন!');
+            alert('Only administrators can delete customer records.');
             return;
         }
-        if (confirm('এই কাস্টমারের রেকর্ড চিরতরে মুছে ফেলতে চান?')) {
+        if (confirm('Are you sure you want to permanently delete this customer?')) {
             remove(ref(db, 'customers/' + key)).then(() => {
-                showToast('কাস্টমার রেকর্ড মুছে ফেলা হয়েছে!', 'info');
+                showToast('Customer record deleted permanently.', 'info');
             });
         }
     };
@@ -1793,38 +1922,49 @@
     });
 
     // ----------------------------------------------------
-    // STATS & METRICS COUNTER
+    // STATS & METRICS FORMATTER
     // ----------------------------------------------------
+    function formatCompactTaka(num) {
+        num = Number(num || 0);
+        if (num >= 10000000) {
+            return (num / 10000000).toFixed(2) + ' Cr BDT';
+        } else if (num >= 1000000) {
+            return (num / 1000000).toFixed(2) + ' Million BDT';
+        } else if (num >= 100000) {
+            return (num / 100000).toFixed(2) + ' Lac BDT';
+        } else if (num >= 1000) {
+            return (num / 1000).toFixed(1) + ' K BDT';
+        }
+        return '৳ ' + num.toLocaleString();
+    }
+
     function updateStats(list) {
-        document.getElementById('totalCustomers').innerText = list.length;
+        document.getElementById('totalCustomers').innerText = list.length.toLocaleString();
         
         const activeCount = list.filter(c => c.status === 'active' || c.status === 'resolved').length;
-        document.getElementById('activeCustomers').innerText = activeCount;
+        document.getElementById('activeCustomers').innerText = activeCount.toLocaleString();
 
         const disconnectedCount = list.filter(c => c.status === 'disconnected').length;
-        document.getElementById('disconnectedCustomers').innerText = disconnectedCount;
+        document.getElementById('disconnectedCustomers').innerText = disconnectedCount.toLocaleString();
 
         const issuesOrFollowupCount = list.filter(c => c.status === 'issue' || c.status === 'followup').length;
-        document.getElementById('issuesCount').innerText = issuesOrFollowupCount;
+        document.getElementById('issuesCount').innerText = issuesOrFollowupCount.toLocaleString();
 
+        // Revenue Number Formatted Clearly
         const totalRevenue = list.reduce((sum, c) => sum + Number(c.amount || 0), 0);
-        document.getElementById('totalRevenue').innerText = '৳ ' + totalRevenue.toLocaleString();
+        document.getElementById('totalRevenue').innerText = totalRevenue.toLocaleString('en-US');
+        document.getElementById('compactRevenue').innerText = `(${formatCompactTaka(totalRevenue)})`;
 
+        // Parcels Shipped
         const totalParcels = list.reduce((sum, c) => sum + Number(c.quantity || 0), 0);
-        document.getElementById('totalParcels').innerText = totalParcels;
+        document.getElementById('totalParcels').innerText = totalParcels.toLocaleString();
 
-        // Update tab count badges
-        const countAll = list.length;
-        const countActive = list.filter(c => c.status === 'active').length;
-        const countFollowup = list.filter(c => c.status === 'followup').length;
-        const countIssue = list.filter(c => c.status === 'issue').length;
-        const countDisconnected = list.filter(c => c.status === 'disconnected').length;
-
-        document.getElementById('count_all').innerText = countAll;
-        document.getElementById('count_active').innerText = countActive;
-        document.getElementById('count_followup').innerText = countFollowup;
-        document.getElementById('count_issue').innerText = countIssue;
-        document.getElementById('count_disconnected').innerText = countDisconnected;
+        // Tab Badges
+        document.getElementById('count_all').innerText = list.length;
+        document.getElementById('count_active').innerText = list.filter(c => c.status === 'active').length;
+        document.getElementById('count_followup').innerText = list.filter(c => c.status === 'followup').length;
+        document.getElementById('count_issue').innerText = list.filter(c => c.status === 'issue').length;
+        document.getElementById('count_disconnected').innerText = list.filter(c => c.status === 'disconnected').length;
     }
 
     // Follow-up Due Today Checker
@@ -1865,7 +2005,7 @@
         const todayStr = new Date().toISOString().split('T')[0];
 
         let filtered = currentCustomersList.filter(c => {
-            // Status Tab Filtering
+            // Filter Tabs
             if (currentActiveFilter === 'active' && c.status !== 'active') return false;
             if (currentActiveFilter === 'followup' && c.status !== 'followup') return false;
             if (currentActiveFilter === 'issue' && c.status !== 'issue') return false;
@@ -1876,7 +2016,7 @@
                 }
             }
 
-            // Text Search across Name, Phone, Reason, Issue, Notes
+            // Search Filter
             if (query) {
                 const combined = `${c.name || ''} ${c.phone || ''} ${c.disconnectReason || ''} ${c.businessIssues || ''} ${c.feedbackNotes || ''} ${c.status || ''}`.toLowerCase();
                 if (!combined.includes(query)) return false;
@@ -1897,18 +2037,28 @@
                 return a.nextFollowUpDate.localeCompare(b.nextFollowUpDate);
             });
         }
-        // 'newest' default remains current list order
 
         renderTable(filtered);
     };
 
-    // Render Rows in Table
+    // Render Table Rows
     function renderTable(list) {
         const tbody = document.getElementById('tableBody');
         tbody.innerHTML = '';
 
         if (list.length === 0) {
-            tbody.innerHTML = `<tr><td colspan="7" style="text-align:center; padding: 40px; color: var(--text-muted);"><i class="fa-solid fa-inbox" style="font-size: 1.8rem; margin-bottom: 8px; display:block;"></i> কোনো কাস্টমার রেকর্ড পাওয়া যায়নি।</td></tr>`;
+            tbody.innerHTML = `
+                <tr>
+                    <td colspan="7">
+                        <div class="empty-state-box">
+                            <div class="empty-state-icon"><i class="fa-solid fa-inbox"></i></div>
+                            <h4 style="font-weight: 700; font-size: 1rem; color: var(--text-primary);">No Customers Found</h4>
+                            <p style="font-size: 0.84rem; margin-top: 4px;">No records match the active filter or search query.</p>
+                            <button class="btn-reset-filters" onclick="setFilter('all')"><i class="fa-solid fa-rotate-left"></i> View All Customers</button>
+                        </div>
+                    </td>
+                </tr>
+            `;
             return;
         }
 
@@ -1917,41 +2067,45 @@
 
             // VIP Spender Badge (>= 5000)
             const isVip = Number(c.amount || 0) >= 5000;
-            const vipBadge = isVip ? `<span style="font-size: 0.7rem; background: linear-gradient(135deg, #f59e0b, #d97706); color: #000; padding: 2px 7px; border-radius: 10px; font-weight: 800; margin-left: 6px;">VIP</span>` : '';
+            const vipBadge = isVip ? `<span style="font-size: 0.68rem; background: #fef3c7; color: #b45309; border: 1px solid #fde68a; padding: 2px 6px; border-radius: 6px; font-weight: 800; margin-left: 6px;">VIP</span>` : '';
 
             // Clean Phone for WhatsApp
             const cleanPhone = formatBdPhoneForWhatsApp(c.phone);
-            const waGreeting = encodeURIComponent(`আসসালামু আলাইকুম ${c.name || ''}! Sanvee's by Tony থেকে যোগাযোগ করছি। কেমন আছেন?`);
+            const waGreeting = encodeURIComponent(`Assalamu Alaikum ${c.name || ''}! Greetings from Sanvee's by Tony. How are you doing?`);
             const waLink = `https://wa.me/${cleanPhone}?text=${waGreeting}`;
 
             // Feedback summary snippet
             let feedbackSnippet = '';
             if (c.disconnectReason || c.feedbackNotes || c.businessIssues) {
-                const issueIndicator = (c.businessIssues && !c.businessIssues.startsWith('না')) ? '<i class="fa-solid fa-triangle-exclamation" style="color: #f87171;"></i>' : '<i class="fa-solid fa-comment-dots"></i>';
+                const isInternalIssue = c.businessIssues && c.businessIssues.startsWith('Yes');
+                const issueIcon = isInternalIssue 
+                    ? '<i class="fa-solid fa-triangle-exclamation" style="color: #e11d48;"></i>' 
+                    : '<i class="fa-regular fa-comment-dots"></i>';
                 const snippetText = c.disconnectReason || c.feedbackNotes || c.businessIssues;
-                feedbackSnippet = `<div class="crm-summary-snippet" title="${escapeHtml(snippetText)}">${issueIndicator} ${escapeHtml(snippetText)}</div>`;
+                const snippetClass = isInternalIssue ? 'crm-summary-snippet has-issue' : 'crm-summary-snippet';
+                feedbackSnippet = `<div class="${snippetClass}" title="${escapeHtml(snippetText)}">${issueIcon} ${escapeHtml(snippetText)}</div>`;
             }
 
             // Action buttons
             let actionButtons = `
-                <a href="${waLink}" target="_blank" class="btn-icon btn-wa" title="WhatsApp-এ মেসেজ দিন"><i class="fa-brands fa-whatsapp"></i></a>
-                <button class="btn-icon btn-crm" onclick="openCrmModal('${c.id}')" title="রিলেশনশিপ ও ফিডব্যাক লগ এন্ট্রি করুন"><i class="fa-solid fa-handshake-angle"></i></button>
-                <button class="btn-icon btn-edit" onclick="populateEditForm('${c.id}')" title="তথ্য এডিট করুন"><i class="fa-solid fa-pen"></i></button>
+                <a href="${waLink}" target="_blank" class="btn-icon btn-wa" title="Open WhatsApp Chat"><i class="fa-brands fa-whatsapp"></i></a>
+                <button class="btn-icon btn-crm" onclick="openCrmModal('${c.id}')" title="Log Feedback & Relationship Status"><i class="fa-solid fa-handshake-angle"></i></button>
+                <button class="btn-icon btn-edit" onclick="populateEditForm('${c.id}')" title="Edit Customer Details"><i class="fa-solid fa-pen"></i></button>
             `;
 
             if (currentUserRole === 'admin') {
-                actionButtons += `<button class="btn-icon btn-delete" onclick="deleteCustomerFromFirebase('${c.id}')" title="ডিলিট করুন"><i class="fa-solid fa-trash"></i></button>`;
+                actionButtons += `<button class="btn-icon btn-delete" onclick="deleteCustomerFromFirebase('${c.id}')" title="Delete Record"><i class="fa-solid fa-trash"></i></button>`;
             }
 
             const row = document.createElement('tr');
             row.innerHTML = `
                 <td style="text-align: center;"><span class="serial-badge">${index + 1}</span></td>
                 <td>
-                    <div style="font-weight: 700;">${escapeHtml(c.name)} ${vipBadge}</div>
+                    <div style="font-weight: 700; color: var(--text-primary);">${escapeHtml(c.name)} ${vipBadge}</div>
                 </td>
                 <td>
-                    <a href="tel:${c.phone}" class="phone-badge" style="text-decoration:none;" title="কল করুন">
-                        <i class="fa-solid fa-phone" style="font-size: 0.7rem; color: #10b981;"></i> ${escapeHtml(c.phone)}
+                    <a href="tel:${c.phone}" class="phone-badge" style="text-decoration:none;" title="Direct Call">
+                        <i class="fa-solid fa-phone" style="font-size: 0.7rem; color: #059669;"></i> ${escapeHtml(c.phone)}
                     </a>
                 </td>
                 <td><span class="amount-tag">৳ ${Number(c.amount || 0).toLocaleString()}</span></td>
@@ -1973,16 +2127,16 @@
     function getStatusBadgeConfig(status) {
         switch (status) {
             case 'disconnected':
-                return { class: 'disconnected', label: 'যোগাযোগ নেই', icon: 'fa-user-xmark' };
+                return { class: 'disconnected', label: 'Disconnected', icon: 'fa-user-xmark' };
             case 'followup':
-                return { class: 'followup', label: 'ফলো-আপ প্রয়োজন', icon: 'fa-clock' };
+                return { class: 'followup', label: 'Follow-up Due', icon: 'fa-clock' };
             case 'issue':
-                return { class: 'issue', label: 'সমস্যা/অভিযোগ', icon: 'fa-triangle-exclamation' };
+                return { class: 'issue', label: 'Issue / Complaint', icon: 'fa-triangle-exclamation' };
             case 'resolved':
-                return { class: 'resolved', label: 'সমাধান হয়েছে', icon: 'fa-handshake' };
+                return { class: 'resolved', label: 'Resolved', icon: 'fa-handshake' };
             case 'active':
             default:
-                return { class: 'active', label: 'অ্যাক্টিভ', icon: 'fa-circle-check' };
+                return { class: 'active', label: 'Active', icon: 'fa-circle-check' };
         }
     }
 
@@ -2020,7 +2174,7 @@
 
         // Setup WhatsApp & Call buttons in modal
         const cleanPhone = formatBdPhoneForWhatsApp(c.phone);
-        const waGreeting = encodeURIComponent(`আসসালামু আলাইকুম ${c.name}! Sanvee's by Tony থেকে যোগাযোগ করছি। কেমন আছেন?`);
+        const waGreeting = encodeURIComponent(`Assalamu Alaikum ${c.name}! Greetings from Sanvee's by Tony. How are you doing?`);
         document.getElementById('crmQuickWa').href = `https://wa.me/${cleanPhone}?text=${waGreeting}`;
         document.getElementById('crmQuickCall').href = `tel:${c.phone}`;
 
@@ -2028,7 +2182,7 @@
         document.getElementById('crmStatus').value = c.status || 'active';
         document.getElementById('crmReasonPreset').value = '';
         document.getElementById('crmCustomReason').value = c.disconnectReason || '';
-        document.getElementById('crmBusinessIssue').value = c.businessIssues || 'না, কোনো সমস্যা পাওয়া যায়নি';
+        document.getElementById('crmBusinessIssue').value = c.businessIssues || "No internal issue detected (Customer's personal reason)";
         document.getElementById('crmNotes').value = c.feedbackNotes || '';
         document.getElementById('crmFollowUpDate').value = c.nextFollowUpDate || '';
 
@@ -2042,7 +2196,7 @@
     window.handlePresetReason = function() {
         const preset = document.getElementById('crmReasonPreset').value;
         const customInput = document.getElementById('crmCustomReason');
-        if (preset && preset !== 'অন্যান্য কারণ') {
+        if (preset && preset !== 'Other custom reason') {
             customInput.value = preset;
         }
     };
@@ -2078,9 +2232,9 @@
             lastContactedBy: currentUserRole
         }).then(() => {
             closeCrmModal();
-            showToast('কাস্টমার রিলেশনশিপ ও ফিডব্যাক সফলভাবে সংরক্ষিত হয়েছে!', 'success');
+            showToast('Customer relationship & feedback saved successfully!', 'success');
         }).catch(err => {
-            showToast('ত্রুটি: ' + err.message, 'error');
+            showToast('Error: ' + err.message, 'error');
         });
     };
 
@@ -2089,11 +2243,11 @@
     // ----------------------------------------------------
     window.exportToCSV = function() {
         if (currentCustomersList.length === 0) {
-            alert('এক্সপোর্ট করার মতো কোনো ডেটা নেই!');
+            alert('No customer records available to export.');
             return;
         }
 
-        let csv = "\uFEFF"; // UTF-8 BOM for Bangla font support in Excel
+        let csv = "\uFEFF"; // UTF-8 BOM
         csv += "SL,Customer Name,Phone Number,Total Spent (BDT),Parcels,Status,Disconnect Reason,Our Business Issues,Conversation Notes,Next Follow-up Date\n";
 
         currentCustomersList.forEach((c, i) => {
@@ -2110,15 +2264,15 @@
         const url = URL.createObjectURL(blob);
         const link = document.createElement("a");
         link.href = url;
-        link.download = `Sanvees_Customer_CRM_Report_${new Date().toISOString().split('T')[0]}.csv`;
+        link.download = `Sanvees_Customer_Report_${new Date().toISOString().split('T')[0]}.csv`;
         link.click();
         URL.revokeObjectURL(url);
-        showToast('CSV ফাইল সফলভাবে ডাউনলোড হয়েছে!', 'info');
+        showToast('CSV report downloaded successfully!', 'info');
     };
 
     window.downloadJsonBackup = function() {
         if (currentCustomersList.length === 0) {
-            alert('ব্যাকআপ নেওয়ার মতো কোনো ডেটা নেই!');
+            alert('No records available to backup.');
             return;
         }
         const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(currentCustomersList, null, 2));
@@ -2126,7 +2280,7 @@
         dlAnchor.setAttribute("href", dataStr);
         dlAnchor.setAttribute("download", `Sanvees_Database_Backup_${new Date().toISOString().split('T')[0]}.json`);
         dlAnchor.click();
-        showToast('সম্পূর্ণ ডাটাবেজ ব্যাকআপ (JSON) ডাউনলোড হয়েছে!', 'success');
+        showToast('Full JSON backup downloaded successfully!', 'success');
     };
 
     // Close modals with Escape key
